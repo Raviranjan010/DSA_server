@@ -4,6 +4,23 @@
 
 ---
 
+## 🚀 PHASE 1: The "Must-Solve" 10 Beginner Problems
+
+Before diving into complex company-specific questions, ensure you can solve these 10 foundational problems. They cover all basic operations and common pitfalls.
+
+1.  **Find the Largest/Smallest Element** — Basic traversal.
+2.  **Find Second Largest** — Single pass logic.
+3.  **Check if Array is Sorted** — Linear scan.
+4.  **Reverse an Array** — Two pointers from ends.
+5.  **Remove Duplicates from Sorted** — Two pointers same direction.
+6.  **Left Rotate by 1** — Manual shifting.
+7.  **Move Zeroes to End** — Two pointers same direction.
+8.  **Linear Search** — Finding an element.
+9.  **Binary Search** — O(log n) searching.
+10. **Two Sum (Sorted)** — Two pointers converging.
+
+---
+
 ## 🟢 EASY PROBLEMS
 
 ---

@@ -602,4 +602,108 @@ You get an array problem. Go through this tree:
 
 ---
 
-*Next → `04_arrays_company_questions.md` — 60+ real questions with company tags*
+---
+
+## 🛠️ SECTION 9: Useful Utility Functions
+
+```cpp
+// ── Print Array/Vector ─────────────────────────────────────
+void printArray(int arr[], int n){
+    for(int i = 0; i < n; i++) cout << arr[i] << " ";
+    cout << "\n";
+}
+
+void printVector(vector<int>& v){
+    for(int x : v) cout << x << " ";
+    cout << "\n";
+}
+
+void print2D(vector<vector<int>>& matrix){
+    for(auto& row : matrix){
+        for(int x : row) cout << x << " ";
+        cout << "\n";
+    }
+}
+
+// ── Input Helper ───────────────────────────────────────────
+void readArray(int arr[], int n){
+    for(int i = 0; i < n; i++) cin >> arr[i];
+}
+
+vector<int> readVector(int n){
+    vector<int> v(n);
+    for(int i = 0; i < n; i++) cin >> v[i];
+    return v;
+}
+```
+
+---
+
+## 🏆 SECTION 10: Competitive Programming Template
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+typedef pair<int, int> pii;
+
+#define pb push_back
+#define mp make_pair
+#define fi first
+#define se second
+#define sz(x) ((int)x.size())
+#define all(x) x.begin(), x.end()
+
+// Fast I/O
+void fast_io() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+}
+
+void solve() {
+    int n; cin >> n;
+    vi arr(n);
+    for(int i = 0; i < n; i++) cin >> arr[i];
+    
+    // Logic here
+}
+
+int main(){
+    fast_io();
+    int t = 1;
+    // cin >> t; // Uncomment if multiple test cases
+    while(t--) solve();
+    return 0;
+}
+```
+
+---
+
+## 🐛 SECTION 11: Debugging Tips
+
+### Tip 1: Print Intermediate Values
+```cpp
+#define DEBUG(x) cout << #x << " = " << x << "\n"
+
+int n = 5;
+DEBUG(n); // Output: n = 5
+```
+
+### Tip 2: Trace with Small Examples
+- Instead of testing with `n=1000`, manually trace with `arr = {1, 2, 3}`.
+- Write down the state of pointers (`left`, `right`, `mid`) at each step.
+
+### Tip 3: Check Edge Cases First
+- **Empty Array**: `n = 0`
+- **Single Element**: `n = 1`
+- **Two Elements**: `n = 2`
+- **All Same Elements**: `[5, 5, 5]`
+- **Sorted vs Unsorted**
+- **Negative Numbers**
+
+---
+
+*Next → `04_arrays_company_questions.md` — 60+ real questions with company tags*

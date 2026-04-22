@@ -4,6 +4,39 @@
 
 ---
 
+## 🚀 How to Approach Array Problems: The 5-Step Framework
+
+Mastering array problems isn't about memorizing 100 solutions; it's about having a consistent process. Use this framework for every problem:
+
+```
+1. UNDERSTAND
+   ├─ Read problem carefully (multiple times!)
+   ├─ Identify inputs, outputs, and constraints (n=10^5? Negatives?)
+   └─ Work through a small example by hand
+
+2. PLAN
+   ├─ Start with Brute Force (What's the simplest way?)
+   ├─ Identify the Pattern (Sorted? Contiguous? Pairs?)
+   └─ Choose optimal approach (Two Pointers? Sliding Window?)
+
+3. CODE
+   ├─ Write clean, readable code
+   ├─ Use meaningful variable names (left, right, currentSum)
+   └─ Handle edge cases (empty array, size 1)
+
+4. TEST
+   ├─ Run against provided examples
+   ├─ Test your own edge cases
+   └─ Dry run your logic on paper if stuck
+
+5. OPTIMIZE
+   ├─ Can I improve time complexity? (O(n²) → O(n log n) → O(n))
+   ├─ Can I reduce extra space? (O(n) → O(1))
+   └─ Is there a more elegant STL-based approach?
+```
+
+---
+
 ## PATTERN 1: Prefix Sum
 
 ### 1.1 The Problem It Solves
@@ -1029,4 +1062,172 @@ a = a ^ b;   // a = 15^5 = 10 (original b!)
 
 ---
 
-*Next → `03_arrays_shortcuts_tricks.md` — Memory tricks, patterns cheatsheet, one-liners*
+---
+
+## PATTERN 9: 2D Matrix Rotation (90° Clockwise)
+
+### 9.1 The Problem
+Given an `n x n` 2D matrix, rotate it by 90 degrees clockwise **in-place**.
+
+```
+Input:
+1 2 3
+4 5 6
+7 8 9
+
+Output:
+7 4 1
+8 5 2
+9 6 3
+```
+
+### 9.2 The Strategy (Transpose + Reverse)
+Instead of trying to move each element to its final destination in one go, use this two-step trick:
+1. **Transpose**: Convert rows to columns (swap `mat[i][j]` with `mat[j][i]`).
+2. **Reverse each row**: Flips the matrix horizontally.
+
+```cpp
+void rotateMatrix(vector<vector<int>>& matrix) {
+    int n = matrix.size();
+    
+    // Step 1: Transpose (O(n²))
+    for(int i = 0; i < n; i++) {
+        for(int j = i + 1; j < n; j++) {
+            swap(matrix[i][j], matrix[j][i]);
+        }
+    }
+    
+    // Step 2: Reverse each row (O(n²))
+    for(int i = 0; i < n; i++) {
+        reverse(matrix[i].begin(), matrix[i].end());
+    }
+}
+```
+
+**Why this works?**
+- Transpose makes `(row i, col j)` move to `(row j, col i)`.
+- Reversing each row makes `(row j, col i)` move to `(row j, col n-1-i)`.
+- Final result: `matrix[i][j]` moves to `matrix[j][n-1-i]`, which is the 90° clockwise formula!
+
+---
+
+## PATTERN 10: Spiral Matrix Traversal
+
+### 10.1 The Strategy (Boundary Simulation)
+Traverse the matrix in a spiral order (Right → Down → Left → Up).
+Maintain 4 boundaries: `top`, `bottom`, `left`, `right`.
+
+```cpp
+vector<int> spiralOrder(vector<vector<int>>& matrix) {
+    if(matrix.empty()) return {};
+    vector<int> result;
+    
+    int top = 0, bottom = matrix.size() - 1;
+    int left = 0, right = matrix[0].size() - 1;
+    
+    while(top <= bottom && left <= right) {
+        // 1. Traverse Right
+        for(int i = left; i <= right; i++) result.push_back(matrix[top][i]);
+        top++;
+        
+        // 2. Traverse Down
+        for(int i = top; i <= bottom; i++) result.push_back(matrix[i][right]);
+        right--;
+        
+        // 3. Traverse Left (if top <= bottom)
+        if(top <= bottom) {
+            for(int i = right; i >= left; i--) result.push_back(matrix[bottom][i]);
+            bottom--;
+        }
+        
+        // 4. Traverse Up (if left <= right)
+        if(left <= right) {
+            for(int i = bottom; i >= top; i--) result.push_back(matrix[i][left]);
+            left++;
+        }
+    }
+    return result;
+}
+```
+
+**Time**: O(M × N), **Space**: O(1) (ignoring output array).
+
+---
+
+## PATTERN 11: Difference Array (Range Updates)
+
+### 11.1 The Problem
+Perform $Q$ range updates (Add $V$ to all elements in `arr[L..R]`) and then output the final array.
+- **Naive**: $O(Q \times N)$
+- **Difference Array**: $O(Q + N)$
+
+### 11.2 The Core Idea
+Instead of updating the whole range, just mark the **Start** and **End** of the update.
+```cpp
+// To add V to arr[L..R]:
+diff[L] += V;
+if (R + 1 < n) diff[R + 1] -= V;
+
+// To reconstruct the final array:
+// The prefix sum of 'diff' gives the net change at each index.
+for (int i = 1; i < n; i++) diff[i] += diff[i - 1];
+```
+
+---
+
+## PATTERN 12: Merge Overlapping Intervals
+
+### 12.1 The Problem
+Given a collection of intervals, merge all overlapping intervals.
+`Input: [[1,3],[2,6],[8,10]] → Output: [[1,6],[8,10]]`
+
+### 12.2 The Strategy
+1. **Sort** intervals by start time.
+2. Iterate and check: If current interval starts **before** the last merged interval ends, they overlap.
+3. **Merge**: `newEnd = max(oldEnd, currentEnd)`.
+
+```cpp
+vector<vector<int>> merge(vector<vector<int>>& intervals) {
+    sort(intervals.begin(), intervals.end());
+    vector<vector<int>> merged;
+    for (auto& interval : intervals) {
+        if (merged.empty() || merged.back()[1] < interval[0]) {
+            merged.push_back(interval);
+        } else {
+            merged.back()[1] = max(merged.back()[1], interval[1]);
+        }
+    }
+    return merged;
+}
+```
+
+---
+
+## PATTERN 13: Next Permutation (The Lexicographical Trick)
+
+### 13.1 The Problem
+Find the next lexicographically larger rearrangement of numbers.
+
+### 13.2 The Algorithm (O(N))
+1. **Find Pivot**: Find first index `i` from right such that `arr[i] < arr[i+1]`.
+2. **Find Successor**: If pivot exists, find first index `j` from right such that `arr[j] > arr[i]`.
+3. **Swap** `arr[i]` and `arr[j]`.
+4. **Reverse** everything after index `i` to make it the smallest possible suffix.
+
+```cpp
+void nextPermutation(vector<int>& nums) {
+    int i = (int)nums.size() - 2;
+    while (i >= 0 && nums[i] >= nums[i + 1]) i--;
+    if (i >= 0) {
+        int j = nums.size() - 1;
+        while (nums[j] <= nums[i]) j--;
+        swap(nums[i], nums[j]);
+    }
+    reverse(nums.begin() + i + 1, nums.end());
+}
+```
+
+---
+
+*Next → `03_arrays_shortcuts.md` — All mental models and cheat sheets*
+
