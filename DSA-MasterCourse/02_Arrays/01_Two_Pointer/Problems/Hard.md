@@ -1,6 +1,8 @@
 # Two Pointer — Hard Problems
 
-> **5 advanced problems requiring creative thinking**
+> **5 advanced problems requiring creative thinking**  
+> **Prerequisites**: Medium Problems, strong pattern recognition  
+> **Time Required**: 4-5 hours
 
 ---
 

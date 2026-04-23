@@ -1,6 +1,8 @@
 # Two Pointer — Medium Problems
 
-> **5 medium-level problems combining multiple concepts**
+> **5 medium-level problems combining multiple concepts**  
+> **Prerequisites**: Easy Problems, `Patterns.md`  
+> **Time Required**: 3-4 hours
 
 ---
 

@@ -1,6 +1,8 @@
 # Two Pointer — Easy Problems
 
-> **5 essential easy problems to master the basics**
+> **5 essential easy problems to master the basics**  
+> **Prerequisites**: `01_Two_Pointer/Notes.md`, `Patterns.md`  
+> **Time Required**: 2-3 hours
 
 ---
 
