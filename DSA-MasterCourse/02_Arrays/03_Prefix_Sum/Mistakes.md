@@ -14,6 +14,7 @@ int sumRange(int left, int right) {
 }
 ```
 
+
 **Correct**:
 ```cpp
 int sumRange(int left, int right) {
