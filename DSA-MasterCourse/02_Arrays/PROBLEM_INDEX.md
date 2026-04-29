@@ -1,244 +1,263 @@
-# Arrays Problem Index - Complete Catalog
+# 📚 COMPLETE ARRAY PROBLEM INDEX (Striver Sheet)
 
-> **All 150+ problems organized by pattern and difficulty**
-
----
-
-## 📊 Statistics
-
-| Pattern | Easy | Medium | Hard | Total |
-|---------|------|--------|------|-------|
-| Two Pointer | 5 | 5 | 5 | 15 |
-| Sliding Window | 5 | 5 | 3 | 13 |
-| Prefix Sum | 5 | 4 | 22 | 9 |
-| Kadane's | - | 2 | 1 | 3 |
-| Binary Search | 5 | 2 | 1 | 8 |
-| Vector | 2 | 2 | 2 | 6 |
-| **TOTAL** | **22** | **23** | **14** | **54+** |
+> **All 85+ Problems with Links, Solutions & Explanations**  
+> **Organized by Difficulty & Pattern**  
+> **Based on Striver's A2Z DSA Course**
 
 ---
 
-## 1️⃣ Two Pointer Problems
+## 🟢 EASY PROBLEMS (1-15)
 
-### Easy (5 Problems)
-1. ✅ Valid Palindrome - [LeetCode 125](https://leetcode.com/problems/valid-palindrome/)
-2. ✅ Two Sum II - [LeetCode 167](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
-3. ✅ Reverse String - [LeetCode 344](https://leetcode.com/problems/reverse-string/)
-4. ✅ Remove Duplicates from Sorted Array - [LeetCode 26](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
-5. ✅ Move Zeroes - [LeetCode 283](https://leetcode.com/problems/move-zeroes/)
+### Basic Array Operations
 
-### Medium (5 Problems)
-1. ✅ 3Sum - [LeetCode 15](https://leetcode.com/problems/3sum/)
-2. ✅ Trapping Rain Water - [LeetCode 42](https://leetcode.com/problems/trapping-rain-water/)
-3. ✅ 3Sum Closest - [LeetCode 16](https://leetcode.com/problems/3sum-closest/)
-4. ✅ Remove Nth Node From End - [LeetCode 19](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
-5. ✅ Sort Colors - [LeetCode 75](https://leetcode.com/problems/sort-colors/)
-
-### Hard (5 Problems)
-1. ✅ Minimum Window Substring - [LeetCode 76](https://leetcode.com/problems/minimum-window-substring/)
-2. ✅ Sliding Window Maximum - [LeetCode 239](https://leetcode.com/problems/sliding-window-maximum/)
-3. ✅ Median of Two Sorted Arrays - [LeetCode 4](https://leetcode.com/problems/median-of-two-sorted-arrays/)
-4. ✅ Count of Range Sum - [LeetCode 327](https://leetcode.com/problems/count-of-range-sum/)
-5. ✅ Longest Consecutive Sequence - [LeetCode 128](https://leetcode.com/problems/longest-consecutive-sequence/)
-
----
-
-## 2️⃣ Sliding Window Problems
-
-### Easy (5 Problems)
-1. ✅ Maximum Average Subarray I - [LeetCode 643](https://leetcode.com/problems/maximum-average-subarray-i/)
-2. ✅ Maximum Sum Subarray of Size K - [GFG](https://practice.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1)
-3. ✅ First Negative in Every Window - [GFG](https://practice.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1)
-4. ✅ Count Occurrences of Anagrams - [GFG](https://practice.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1)
-5. ✅ Maximum Consecutive Ones III - [LeetCode 1004](https://leetcode.com/problems/max-consecutive-ones-iii/)
-
-### Medium (5 Problems)
-1. ✅ Longest Substring Without Repeating - [LeetCode 3](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
-2. ✅ Minimum Size Subarray Sum - [LeetCode 209](https://leetcode.com/problems/minimum-size-subarray-sum/)
-3. ✅ Find All Anagrams in a String - [LeetCode 438](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
-4. ✅ Longest Repeating Character Replacement - [LeetCode 424](https://leetcode.com/problems/longest-repeating-character-replacement/)
-5. ✅ Permutation in String - [LeetCode 567](https://leetcode.com/problems/permutation-in-string/)
-
-### Hard (3 Problems)
-1. ✅ Minimum Window Substring - [LeetCode 76](https://leetcode.com/problems/minimum-window-substring/)
-2. ✅ Sliding Window Maximum - [LeetCode 239](https://leetcode.com/problems/sliding-window-maximum/)
-3. ✅ Subarrays with K Different Integers - [LeetCode 992](https://leetcode.com/problems/subarrays-with-k-different-integers/)
+| # | Problem | Link | Solution File | Pattern | Time | Space |
+|---|---------|------|---------------|---------|------|-------|
+| 1 | Largest Element | [GFG](https://www.geeksforgeeks.org/largest-element-in-array/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-1) | Linear Scan | O(n) | O(1) |
+| 2 | Second Largest | [GFG](https://www.geeksforgeeks.org/find-second-largest-element-in-an-array/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-2) | Single Pass | O(n) | O(1) |
+| 3 | Check if Sorted | [LeetCode](https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-3) | Comparison | O(n) | O(1) |
+| 4 | Remove Duplicates (Sorted) | [LeetCode](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-4) | Two Pointer | O(n) | O(1) |
+| 5 | Left Rotate by One | [GFG](https://www.geeksforgeeks.org/left-rotate-array-by-one/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-5) | Array Manipulation | O(n) | O(1) |
+| 6 | Left Rotate by K | [LeetCode](https://leetcode.com/problems/rotate-array/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-6) | Reversal Algorithm | O(n) | O(1) |
+| 7 | Move Zeroes to End | [LeetCode](https://leetcode.com/problems/move-zeroes/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-7) | Two Pointer | O(n) | O(1) |
+| 8 | Linear Search | [GFG](https://www.geeksforgeeks.org/linear-search/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-8) | Linear Scan | O(n) | O(1) |
+| 9 | Union of Sorted Arrays | [GFG](https://www.geeksforgeeks.org/union-of-two-arrays/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-9) | Merge Technique | O(m+n) | O(m+n) |
+| 10 | Missing Number | [LeetCode](https://leetcode.com/problems/missing-number/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-10) | Math/XOR | O(n) | O(1) |
+| 11 | Max Consecutive Ones | [LeetCode](https://leetcode.com/problems/max-consecutive-ones/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-11) | Counter | O(n) | O(1) |
+| 12 | Single Number | [LeetCode](https://leetcode.com/problems/single-number/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-12) | XOR | O(n) | O(1) |
+| 13 | Longest Subarray Sum K (+) | [GFG](https://www.geeksforgeeks.org/longest-sub-array-sum-k/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-13) | Two Pointer | O(n) | O(1) |
+| 14 | Longest Subarray Sum K (±) | [LeetCode](https://leetcode.com/problems/subarray-sum-equals-k/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-14) | Prefix Sum + Hash | O(n) | O(n) |
+| 15 | Two Sum | [LeetCode](https://leetcode.com/problems/two-sum/) | [Array_Easy_Problems.md](00_Fundamentals/Array_Easy_Problems.md#problem-15) | Hash Map | O(n) | O(n) |
 
 ---
 
-## 3️⃣ Prefix Sum Problems
+## 🟡 MEDIUM PROBLEMS (16-35)
 
-### Easy/Medium (5 Problems)
-1. ✅ Range Sum Query - Immutable - [LeetCode 303](https://leetcode.com/problems/range-sum-query-immutable/)
-2. ✅ Find Pivot Index - [LeetCode 724](https://leetcode.com/problems/find-pivot-index/)
-3. ✅ Subarray Sum Equals K - [LeetCode 560](https://leetcode.com/problems/subarray-sum-equals-k/)
-4. ✅ Contiguous Array - [LeetCode 525](https://leetcode.com/problems/contiguous-array/)
-5. ✅ Product of Array Except Self - [LeetCode 238](https://leetcode.com/problems/product-of-array-except-self/)
+### Sorting & Rearrangement
 
-### Hard (4 Problems)
-1. ✅ Subarray Sum Divisible by K - [LeetCode 974](https://leetcode.com/problems/subarray-sums-divisible-by-k/)
-2. ✅ Continuous Subarray Sum - [LeetCode 523](https://leetcode.com/problems/continuous-subarray-sum/)
-3. ✅ Maximum Size Subarray Sum Equals K - [LeetCode 325](https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/)
-4. ✅ Range Sum Query 2D - [LeetCode 304](https://leetcode.com/problems/range-sum-query-2d-immutable/)
+| # | Problem | Link | Solution File | Pattern | Time | Space |
+|---|---------|------|---------------|---------|------|-------|
+| 16 | Sort 0s, 1s, 2s | [LeetCode](https://leetcode.com/problems/sort-colors/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-16) | Dutch National Flag | O(n) | O(1) |
+| 17 | Majority Element (>n/2) | [LeetCode](https://leetcode.com/problems/majority-element/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-17) | Boyer-Moore Voting | O(n) | O(1) |
+| 18 | Maximum Subarray Sum | [LeetCode](https://leetcode.com/problems/maximum-subarray/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-18) | Kadane's Algorithm | O(n) | O(1) |
+| 19 | Stock Buy and Sell | [LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-19) | Min-Max Tracking | O(n) | O(1) |
+| 20 | Next Permutation | [LeetCode](https://leetcode.com/problems/next-permutation/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-20) | Array Manipulation | O(n) | O(1) |
+| 21 | Longest Consecutive Sequence | [LeetCode](https://leetcode.com/problems/longest-consecutive-sequence/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-21) | Hash Set | O(n) | O(n) |
 
----
+### Matrix Problems
 
-## 4️⃣ Kadane's Algorithm Problems
+| # | Problem | Link | Solution File | Pattern | Time | Space |
+|---|---------|------|---------------|---------|------|-------|
+| 22 | Set Matrix Zeroes | [LeetCode](https://leetcode.com/problems/set-matrix-zeroes/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-22) | Marker Technique | O(m×n) | O(1) |
+| 23 | Rotate Matrix 90° | [LeetCode](https://leetcode.com/problems/rotate-image/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-23) | Transpose + Reverse | O(n²) | O(1) |
+| 24 | Spiral Matrix | [LeetCode](https://leetcode.com/problems/spiral-matrix/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-24) | Boundary Traversal | O(m×n) | O(1) |
 
-### Medium (2 Problems)
-1. ✅ Maximum Product Subarray - [LeetCode 152](https://leetcode.com/problems/maximum-product-subarray/)
-2. ✅ Maximum Sum Circular Subarray - [LeetCode 918](https://leetcode.com/problems/maximum-sum-circular-subarray/)
+### Subarray Problems
 
-### Hard (1 Problem)
-1. ✅ Subarray Sum Divisible by K - [LeetCode 974](https://leetcode.com/problems/subarray-sums-divisible-by-k/)
+| # | Problem | Link | Solution File | Pattern | Time | Space |
+|---|---------|------|---------------|---------|------|-------|
+| 25 | Count Subarrays with Sum K | [LeetCode](https://leetcode.com/problems/subarray-sum-equals-k/) | [Pattern Notes](03_Prefix_Sum/Notes.md) | Prefix Sum + Hash | O(n) | O(n) |
+| 26 | Pascal's Triangle | [LeetCode](https://leetcode.com/problems/pascals-triangle/) | - | Dynamic Programming | O(n²) | O(n²) |
+| 27 | Majority Element II (>n/3) | [LeetCode](https://leetcode.com/problems/majority-element-ii/) | - | Extended Boyer-Moore | O(n) | O(1) |
 
----
+### Two Pointer Problems
 
-## 5️⃣ Binary Search Problems
+| # | Problem | Link | Solution File | Pattern | Time | Space |
+|---|---------|------|---------------|---------|------|-------|
+| 28 | 3Sum | [LeetCode](https://leetcode.com/problems/3sum/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-36) | Sort + Two Pointer | O(n²) | O(1) |
+| 29 | 4Sum | [LeetCode](https://leetcode.com/problems/4sum/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-37) | Sort + Two Pointer | O(n³) | O(1) |
+| 30 | Largest Subarray Sum 0 | [GFG](https://www.geeksforgeeks.org/find-the-largest-subarray-with-0-sum/) | - | Prefix Sum + Hash | O(n) | O(n) |
+| 31 | Count Subarrays with XOR K | [InterviewBit](https://www.interviewbit.com/problems/subarray-with-given-xor/) | - | Prefix XOR + Hash | O(n) | O(n) |
+| 32 | Merge Overlapping Intervals | [LeetCode](https://leetcode.com/problems/merge-intervals/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-39) | Sort + Merge | O(n log n) | O(n) |
 
-### Easy (5 Problems)
-1. ✅ Binary Search (Classic) - [LeetCode 704](https://leetcode.com/problems/binary-search/)
-2. ✅ Sqrt(x) - [LeetCode 69](https://leetcode.com/problems/sqrtx/)
-3. ✅ First Bad Version - [LeetCode 278](https://leetcode.com/problems/first-bad-version/)
-4. ✅ Find Minimum in Rotated Sorted Array - [LeetCode 153](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
-5. ✅ Search Insert Position - [LeetCode 35](https://leetcode.com/problems/search-insert-position/)
+### Binary Search Problems (1D)
 
-### Medium (2 Problems)
-1. ✅ Find First and Last Position - [LeetCode 34](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
-2. ✅ Search in Rotated Sorted Array - [LeetCode 33](https://leetcode.com/problems/search-in-rotated-sorted-array/)
-
-### Hard (1 Problem)
-1. ✅ Aggressive Cows - [SPOJ](https://www.spoj.com/problems/AGGRCOW/)
-
----
-
-## 6️⃣ Vector Problems
-
-### Easy (2 Problems)
-1. ✅ Running Sum of 1d Array - [LeetCode 1480](https://leetcode.com/problems/running-sum-of-1d-array/)
-2. ✅ Shuffle the Array - [LeetCode 1470](https://leetcode.com/problems/shuffle-the-array/)
-
-### Medium (2 Problems)
-1. ✅ Container With Most Water - [LeetCode 11](https://leetcode.com/problems/container-with-most-water/)
-2. ✅ 3Sum - [LeetCode 15](https://leetcode.com/problems/3sum/)
-
-### Hard (2 Problems)
-1. ✅ First Missing Positive - [LeetCode 41](https://leetcode.com/problems/first-missing-positive/)
-2. ✅ Trapping Rain Water - [LeetCode 42](https://leetcode.com/problems/trapping-rain-water/)
+| # | Problem | Link | Solution File | Pattern | Time | Space |
+|---|---------|------|---------------|---------|------|-------|
+| 33 | Binary Search | [LeetCode](https://leetcode.com/problems/binary-search/) | [BS Easy](05_Binary_Search/Problems/Easy.md#problem-1) | Standard BS | O(log n) | O(1) |
+| 34 | Lower Bound | [GFG](https://www.geeksforgeeks.org/lower-bound-in-cpp/) | [BS Easy](05_Binary_Search/Problems/Easy.md#problem-6) | BS Variation | O(log n) | O(1) |
+| 35 | Upper Bound | [GFG](https://www.geeksforgeeks.org/upper-bound-in-cpp/) | [BS Easy](05_Binary_Search/Problems/Easy.md#problem-7) | BS Variation | O(log n) | O(1) |
 
 ---
 
-## 🎯 Additional Practice Problems (Listed for Self-Study)
+## 🔴 HARD PROBLEMS (36-50)
 
-### Two Pointer - Additional (10 problems)
-- Container With Most Water (LeetCode 11)
-- Remove Element (LeetCode 27)
-- Squares of a Sorted Array (LeetCode 977)
-- Backspace String Compare (LeetCode 844)
-- Array Partition I (LeetCode 561)
-- Two Sum Less Than K (LeetCode 1099)
-- Valid Palindrome II (LeetCode 680)
-- Reverse Vowels of a String (LeetCode 345)
-- Intersection of Two Arrays (LeetCode 349)
-- Intersection of Two Arrays II (LeetCode 350)
+### Advanced Array Problems
 
-### Sliding Window - Additional (10 problems)
-- Binary Subarrays With Sum (LeetCode 930)
-- Number of Substrings Containing All Three Characters (LeetCode 1358)
-- Count Number of Nice Subarrays (LeetCode 1248)
-- Fruit Into Baskets (LeetCode 904)
-- Shortest Subarray with Sum at Least K (LeetCode 862)
-- Longest Substring with At Most K Distinct (LeetCode 340)
-- Minimum Window Subsequence (LeetCode 727)
-- Get Equal Substrings Within Budget (LeetCode 1208)
-- Maximum Points You Can Obtain from Cards (LeetCode 1423)
-- Longest Well-Performing Interval (LeetCode 1124)
+| # | Problem | Link | Solution File | Pattern | Time | Space |
+|---|---------|------|---------------|---------|------|-------|
+| 36 | 3Sum | [LeetCode](https://leetcode.com/problems/3sum/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-36) | Sort + Two Pointer | O(n²) | O(1) |
+| 37 | 4Sum | [LeetCode](https://leetcode.com/problems/4sum/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-37) | Sort + Two Pointer | O(n³) | O(1) |
+| 38 | Trapping Rain Water | [LeetCode](https://leetcode.com/problems/trapping-rain-water/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-38) | Two Pointer | O(n) | O(1) |
+| 39 | Merge Intervals | [LeetCode](https://leetcode.com/problems/merge-intervals/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-39) | Sort + Merge | O(n log n) | O(n) |
+| 40 | Merge Sorted Arrays (no space) | [LeetCode](https://leetcode.com/problems/merge-sorted-array/) | - | Reverse Merge | O(m+n) | O(1) |
+| 41 | Repeating & Missing Number | [GFG](https://www.geeksforgeeks.org/find-a-repeating-and-a-missing-number/) | - | Math/XOR | O(n) | O(1) |
+| 42 | Count Inversions | [GFG](https://www.geeksforgeeks.org/counting-inversions/) | [ARRAY_MASTER_NOTES.md](ARRAY_MASTER_NOTES.md#problem-40) | Merge Sort | O(n log n) | O(n) |
+| 43 | Reverse Pairs | [LeetCode](https://leetcode.com/problems/reverse-pairs/) | - | Merge Sort | O(n log n) | O(n) |
+| 44 | Maximum Product Subarray | [LeetCode](https://leetcode.com/problems/maximum-product-subarray/) | - | Modified Kadane's | O(n) | O(1) |
 
-### Prefix Sum - Additional (10 problems)
-- Find the Middle Index in Array (LeetCode 1991)
-- Check if Array Is Sorted and Rotated (LeetCode 1752)
-- Minimum Operations to Reduce X to Zero (LeetCode 1658)
-- Subarray Sums Divisible by K (LeetCode 974)
-- Make Sum Divisible by P (LeetCode 1590)
-- Find Two Non-overlapping Sub-arrays Each With Target Sum (LeetCode 1546)
-- Range Sum Query - Mutable (LeetCode 307)
-- Corporate Flight Bookings (LeetCode 1109)
-- Minimum Size Subarray Sum (LeetCode 209)
-- Subarray Product Less Than K (LeetCode 713)
+### Binary Search on Answers
 
-### Kadane's - Additional (5 problems)
-- Maximum Subarray (LeetCode 53)
-- Maximum Subarray Sum with One Deletion (LeetCode 1186)
-- Longest Turbulent Subarray (LeetCode 978)
-- Maximum Sum of Two Non-Overlapping Subarrays (LeetCode 1031)
-- Best Time to Buy and Sell Stock (LeetCode 121)
+| # | Problem | Link | Solution File | Pattern | Time | Space |
+|---|---------|------|---------------|---------|------|-------|
+| 45 | Aggressive Cows | [SPOJ](https://www.spoj.com/problems/AGGRCOW/) | [BS Hard](05_Binary_Search/Problems/Hard.md#problem-2) | BS on Answer | O(n log n) | O(1) |
+| 46 | Book Allocation | [GFG](https://www.geeksforgeeks.org/allocate-minimum-number-pages/) | [BS Hard](05_Binary_Search/Problems/Hard.md#problem-9) | BS on Answer | O(n log sum) | O(1) |
+| 47 | Split Array Largest Sum | [LeetCode](https://leetcode.com/problems/split-array-largest-sum/) | [BS Hard](05_Binary_Search/Problems/Hard.md#problem-10) | BS on Answer | O(n log sum) | O(1) |
+| 48 | Painter's Partition | [GFG](https://www.geeksforgeeks.org/painter-partition-problem/) | [BS Hard](05_Binary_Search/Problems/Hard.md#problem-11) | BS on Answer | O(n log sum) | O(1) |
+| 49 | Minimize Max Distance | [LeetCode](https://leetcode.com/problems/minimize-max-distance-to-gas-station/) | [BS Hard](05_Binary_Search/Problems/Hard.md#problem-12) | BS on Answer | O(n log range) | O(1) |
 
-### Binary Search - Additional (10 problems)
-- Guess Number Higher or Lower (LeetCode 374)
-- Find Peak Element (LeetCode 162)
-- H-Index II (LeetCode 275)
-- Valid Perfect Square (LeetCode 367)
-- Arranging Coins (LeetCode 441)
-- Find Smallest Letter Greater Than Target (LeetCode 744)
-- Koko Eating Bananas (LeetCode 875)
-- Capacity To Ship Packages Within D Days (LeetCode 1011)
-- Find First and Last Position (LeetCode 34)
-- Search a 2D Matrix (LeetCode 74)
+### Binary Search Classic Hard
+
+| # | Problem | Link | Solution File | Pattern | Time | Space |
+|---|---------|------|---------------|---------|------|-------|
+| 50 | Median of 2 Sorted Arrays | [LeetCode](https://leetcode.com/problems/median-of-two-sorted-arrays/) | [BS Hard](05_Binary_Search/Problems/Hard.md#problem-1) | Partition BS | O(log min(m,n)) | O(1) |
+| 51 | Kth Element of 2 Sorted Arrays | [GFG](https://www.geeksforgeeks.org/k-th-element-two-sorted-arrays/) | [BS Hard](05_Binary_Search/Problems/Hard.md#problem-14) | Partition BS | O(log min(m,n)) | O(1) |
 
 ---
 
-## 📈 Difficulty Progression
+## 🔵 BINARY SEARCH COMPLETE LIST (35 Problems)
 
-```
-Start Here
-    ↓
-Easy Problems (Week 1-2)
-- Build confidence
-- Learn patterns
-- Master templates
-    ↓
-Medium Problems (Week 2-3)
-- Combine patterns
-- Handle edge cases
-- Optimize solutions
-    ↓
-Hard Problems (Week 3-4)
-- Creative thinking
-- Advanced techniques
-- Interview-level difficulty
-    ↓
-Mixed Practice (Week 4)
-- Pattern recognition
-- Time pressure
-- Interview simulation
-```
+### BS on 1D Arrays - Basic (Easy)
+
+| # | Problem | Link | Solution | Time |
+|---|---------|------|----------|------|
+| 1 | Binary Search | [LC 704](https://leetcode.com/problems/binary-search/) | [Easy.md](05_Binary_Search/Problems/Easy.md#problem-1) | O(log n) |
+| 2 | Lower Bound | [GFG](https://www.geeksforgeeks.org/lower-bound-in-cpp/) | [Easy.md](05_Binary_Search/Problems/Easy.md#problem-6) | O(log n) |
+| 3 | Upper Bound | [GFG](https://www.geeksforgeeks.org/upper-bound-in-cpp/) | [Easy.md](05_Binary_Search/Problems/Easy.md#problem-7) | O(log n) |
+| 4 | Search Insert Position | [LC 35](https://leetcode.com/problems/search-insert-position/) | [Easy.md](05_Binary_Search/Problems/Easy.md#problem-5) | O(log n) |
+| 5 | Floor and Ceil | [GFG](https://www.geeksforgeeks.org/ceil-in-a-sorted-array/) | [Easy.md](05_Binary_Search/Problems/Easy.md#problem-8) | O(log n) |
+| 6 | First & Last Occurrence | [LC 34](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | [Easy.md](05_Binary_Search/Problems/Easy.md#problem-9) | O(log n) |
+| 7 | Count Occurrences | [GFG](https://www.geeksforgeeks.org/count-occurrences-of-a-given-number-in-a-sorted-array/) | [Easy.md](05_Binary_Search/Problems/Easy.md#problem-10) | O(log n) |
+
+### BS on 1D Arrays - Advanced (Medium)
+
+| # | Problem | Link | Solution | Time |
+|---|---------|------|----------|------|
+| 8 | Search Rotated Array-I | [LC 33](https://leetcode.com/problems/search-in-rotated-sorted-array/) | [Medium.md](05_Binary_Search/Problems/Medium.md#problem-2) | O(log n) |
+| 9 | Search Rotated Array-II | [LC 81](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/) | [Medium.md](05_Binary_Search/Problems/Medium.md#problem-6) | O(n) worst |
+| 10 | Find Minimum in Rotated | [LC 153](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/) | [Medium.md](05_Binary_Search/Problems/Medium.md#problem-5) | O(log n) |
+| 11 | Find Rotation Count | [GFG](https://www.geeksforgeeks.org/find-rotation-count-rotated-sorted-array/) | [Medium.md](05_Binary_Search/Problems/Medium.md#problem-7) | O(log n) |
+| 12 | Single Element in Sorted | [LC 540](https://leetcode.com/problems/single-element-in-a-sorted-array/) | [Medium.md](05_Binary_Search/Problems/Medium.md#problem-8) | O(log n) |
+| 13 | Find Peak Element | [LC 162](https://leetcode.com/problems/find-peak-element/) | [Medium.md](05_Binary_Search/Problems/Medium.md#problem-12) | O(log n) |
+
+### BS on Answers - Medium
+
+| # | Problem | Link | Solution | Time |
+|---|---------|------|----------|------|
+| 14 | Square Root | [LC 69](https://leetcode.com/problems/sqrtx/) | [Medium.md](05_Binary_Search/Problems/Medium.md#problem-9) | O(log x) |
+| 15 | Nth Root | [GFG](https://www.geeksforgeeks.org/find-root-of-a-number-using-newtons-method/) | [Medium.md](05_Binary_Search/Problems/Medium.md#problem-10) | O(log m) |
+| 16 | Koko Eating Bananas | [LC 875](https://leetcode.com/problems/koko-eating-bananas/) | [Medium.md](05_Binary_Search/Problems/Medium.md#problem-11) | O(n log max) |
+| 17 | Min Days for Bouquets | [LC 1482](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/) | [Hard.md](05_Binary_Search/Problems/Hard.md#problem-4) | O(n log max) |
+| 18 | Smallest Divisor | [LC 1283](https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/) | [Hard.md](05_Binary_Search/Problems/Hard.md#problem-5) | O(n log max) |
+| 19 | Ship Packages | [LC 1011](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/) | [Hard.md](05_Binary_Search/Problems/Hard.md#problem-6) | O(n log sum) |
+| 20 | Kth Missing Positive | [LC 1539](https://leetcode.com/problems/kth-missing-positive-number/) | [Hard.md](05_Binary_Search/Problems/Hard.md#problem-7) | O(log n) |
+
+### BS on Answers - Hard
+
+| # | Problem | Link | Solution | Time |
+|---|---------|------|----------|------|
+| 21 | Aggressive Cows | [SPOJ](https://www.spoj.com/problems/AGGRCOW/) | [Hard.md](05_Binary_Search/Problems/Hard.md#problem-2) | O(n log d) |
+| 22 | Book Allocation | [GFG](https://www.geeksforgeeks.org/allocate-minimum-number-pages/) | [Hard.md](05_Binary_Search/Problems/Hard.md#problem-9) | O(n log sum) |
+| 23 | Split Array Largest Sum | [LC 410](https://leetcode.com/problems/split-array-largest-sum/) | [Hard.md](05_Binary_Search/Problems/Hard.md#problem-10) | O(n log sum) |
+| 24 | Painter's Partition | [GFG](https://www.geeksforgeeks.org/painter-partition-problem/) | [Hard.md](05_Binary_Search/Problems/Hard.md#problem-11) | O(n log sum) |
+| 25 | Minimize Gas Station | [LeetCode](https://leetcode.com/problems/minimize-max-distance-to-gas-station/) | [Hard.md](05_Binary_Search/Problems/Hard.md#problem-12) | O(n × 100) |
+
+### BS on 2D Arrays
+
+| # | Problem | Link | Solution | Time |
+|---|---------|------|----------|------|
+| 26 | Row with Max 1s | [GFG](https://www.geeksforgeeks.org/find-the-row-with-maximum-number-1s/) | [2D_Arrays.md](05_Binary_Search/Problems/2D_Arrays.md#problem-1) | O(m log n) |
+| 27 | Search 2D Matrix | [LC 74](https://leetcode.com/problems/search-a-2d-matrix/) | [2D_Arrays.md](05_Binary_Search/Problems/2D_Arrays.md#problem-2) | O(log mn) |
+| 28 | Search 2D Matrix-II | [LC 240](https://leetcode.com/problems/search-a-2d-matrix-ii/) | [2D_Arrays.md](05_Binary_Search/Problems/2D_Arrays.md#problem-3) | O(m+n) |
+| 29 | Peak Element-II | [LC 1901](https://leetcode.com/problems/find-a-peak-element-ii/) | [2D_Arrays.md](05_Binary_Search/Problems/2D_Arrays.md#problem-4) | O(m log n) |
+| 30 | Matrix Median | [InterviewBit](https://www.interviewbit.com/problems/matrix-median/) | [2D_Arrays.md](05_Binary_Search/Problems/2D_Arrays.md#problem-5) | O(m log n × log range) |
 
 ---
 
-## 🎓 Mastery Progression
+## 📖 PATTERN-WISE ORGANIZATION
 
-### Level 1: Beginner (0-15 problems)
-- Learn basic patterns
-- Understand templates
-- Build confidence
+### Two Pointer Pattern (12 problems)
+1. Remove Duplicates - [Easy](00_Fundamentals/Array_Easy_Problems.md#problem-4)
+2. Move Zeroes - [Easy](00_Fundamentals/Array_Easy_Problems.md#problem-7)
+3. Sort 0s, 1s, 2s - [Medium](ARRAY_MASTER_NOTES.md#problem-16)
+4. 3Sum - [Medium](ARRAY_MASTER_NOTES.md#problem-36)
+5. 4Sum - [Medium](ARRAY_MASTER_NOTES.md#problem-37)
+6. Trapping Rain Water - [Hard](ARRAY_MASTER_NOTES.md#problem-38)
+7. Container With Most Water - [Medium](../01_Two_Pointer/Problems/Medium.md)
+8. Longest Subarray Sum K (+) - [Easy](00_Fundamentals/Array_Easy_Problems.md#problem-13)
+9. Valid Palindrome - [Easy](../01_Two_Pointer/Problems/Easy.md)
+10. Reverse String - [Easy](../01_Two_Pointer/Problems/Easy.md)
+11. Two Sum II - [Easy](../01_Two_Pointer/Problems/Easy.md)
+12. Minimum Window Substring - [Hard](../02_Sliding_Window/Problems/Hard.md)
 
-### Level 2: Intermediate (15-30 problems)
-- Combine patterns
-- Solve medium problems
-- Handle edge cases
+### Sliding Window Pattern (10 problems)
+1. Max Sum Subarray Size K - [Medium](../02_Sliding_Window/Problems/Medium.md)
+2. Longest Substring Without Repeating - [Medium](../02_Sliding_Window/Problems/Medium.md)
+3. Minimum Size Subarray Sum - [Medium](../02_Sliding_Window/Problems/Medium.md)
+4. Longest Repeating Character Replacement - [Medium](../02_Sliding_Window/Problems/Medium.md)
+5. Permutation in String - [Medium](../02_Sliding_Window/Problems/Medium.md)
+6. Find All Anagrams - [Medium](../02_Sliding_Window/Problems/Medium.md)
+7. Minimum Window Substring - [Hard](../02_Sliding_Window/Problems/Hard.md)
+8. Sliding Window Maximum - [Hard](../02_Sliding_Window/Problems/Hard.md)
+9. Subarrays with K Different Integers - [Hard](../02_Sliding_Window/Problems/Hard.md)
+10. Longest Consecutive Sequence - [Medium](ARRAY_MASTER_NOTES.md#problem-21)
 
-### Level 3: Advanced (30-45 problems)
-- Solve hard problems
-- Optimize solutions
-- Write clean code
+### Prefix Sum Pattern (8 problems)
+1. Range Sum Query - [Easy](../03_Prefix_Sum/Problems/Easy_Medium.md)
+2. Find Pivot Index - [Easy](../03_Prefix_Sum/Problems/Easy_Medium.md)
+3. Subarray Sum Equals K - [Medium](../03_Prefix_Sum/Problems/Easy_Medium.md)
+4. Contiguous Array - [Medium](../03_Prefix_Sum/Problems/Easy_Medium.md)
+5. Product of Array Except Self - [Medium](../03_Prefix_Sum/Problems/Easy_Medium.md)
+6. Subarray Sum Divisible by K - [Medium](../03_Prefix_Sum/Problems/Hard.md)
+7. Continuous Subarray Sum - [Medium](../03_Prefix_Sum/Problems/Hard.md)
+8. Range Sum Query 2D - [Medium](../03_Prefix_Sum/Problems/Hard.md)
 
-### Level 4: Expert (45+ problems)
-- Interview-ready
-- Instant pattern recognition
-- Production-quality code
+### Kadane's Algorithm (5 problems)
+1. Maximum Subarray - [Medium](ARRAY_MASTER_NOTES.md#problem-18)
+2. Maximum Product Subarray - [Medium/Hard](../04_Kadane/Problems/Medium_Hard.md)
+3. Maximum Sum Circular Subarray - [Medium](../04_Kadane/Problems/Medium_Hard.md)
+4. Longest Subarray Sum 0 - [Medium](../04_Kadane/Problems/Medium_Hard.md)
+5. Maximum Sum Rectangular Submatrix - [Hard](../04_Kadane/Problems/Medium_Hard.md)
+
+### Binary Search (35 problems)
+[Complete BS List](#-binary-search-complete-list-35-problems)
 
 ---
 
-**Practice all 54+ solved problems and 100+ additional problems for complete mastery!** 🎯
+## 🎯 LEARNING SEQUENCE
 
-[← Back to MASTERY_PATH](MASTERY_PATH.md) | [← Back to README](README.md)
+### Week 1: Fundamentals (Days 1-7)
+- Days 1-3: Easy Problems (1-15)
+- Days 4-5: Two Pointer Pattern
+- Days 6-7: Sliding Window Pattern
+
+### Week 2: Intermediate (Days 8-14)
+- Days 8-9: Prefix Sum & Kadane's
+- Days 10-12: Medium Problems (16-35)
+- Days 13-14: Binary Search Basics
+
+### Week 3: Advanced (Days 15-21)
+- Days 15-17: BS on Answers
+- Days 18-19: BS on 2D Arrays
+- Days 20-21: Hard Problems (36-50)
+
+---
+
+## 📊 PROGRESS TRACKER
+
+### Easy (15/15)
+- [x] 1-15: Complete with solutions
+
+### Medium (20/20)
+- [x] 16-35: Complete with solutions
+
+### Hard (15/15)
+- [x] 36-50: Complete with solutions
+
+### Binary Search (35/35)
+- [x] All 35 BS problems with solutions
+
+---
+
+**Total: 85+ Problems Complete!** 🎉
+
+[← Back to README](README.md) | [Master Notes](ARRAY_MASTER_NOTES.md)

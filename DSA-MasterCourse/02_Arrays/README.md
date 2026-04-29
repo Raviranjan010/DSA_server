@@ -1,47 +1,89 @@
-# 🎯 Arrays — Zero to Mastery Learning System
+# 🎯 Arrays — Zero to Mastery (Striver-Style Complete Guide)
 
-> **Complete Guide to Mastering Arrays in C++**  
-> From absolute basics to advanced interview-level problem solving  
-> **Prerequisites**: Topic 00 (C++ Basics), Topic 01 (Complexity Analysis)
+> **Complete C++ Array Course for DSA**  
+> From absolute basics to advanced interview problems  
+> **Prerequisites**: Topic 00 (C++ Basics), Topic 01 (Complexity Analysis)  
+> **Based on**: Striver's A2Z DSA Course/Sheet  
+> **Total Problems**: 85+ with complete solutions  
+> **Time Required**: 21 Days
 
 ---
 
-## 📖 What You'll Learn
+## 📖 What You'll Master
 
 By completing this module, you will:
 - ✅ Understand arrays at the memory level
-- ✅ Master 7 essential array patterns used in 90% of interview problems
-- ✅ Solve 100+ array problems independently
+- ✅ Master 7 essential patterns used in 90% of interview problems
+- ✅ Solve 85+ array problems independently
 - ✅ Recognize patterns instantly in new problems
-- ✅ Write optimized code under time pressure
+- ✅ Write optimized code under interview pressure
+- ✅ Complete Striver's complete Array sheet
 
 ---
 
-## 🗺️ Learning Roadmap (14-Day Plan)
+## 🚀 Quick Navigation
 
-### Week 1: Foundation & Core Patterns
+### Week 1: Fundamentals (Days 1-7)
+- **Day 1-2**: [Array Fundamentals](00_Fundamentals/) - Basics, Memory, Operations, Vectors, 15 Easy Problems
+- **Day 3-5**: [Two Pointer Pattern](01_Two_Pointer/) - Notes, Patterns, 13 Problems
+- **Day 6-7**: [Sliding Window Pattern](02_Sliding_Window/) - Notes, Patterns, Problems
 
-| Day | Topic | Files | Time | Goals |
-|-----|-------|-------|------|-------|
-| **Day 1** | Array Basics | `00_Fundamentals/Array_Basics.md` | 2-3 hrs | Understand what arrays are, indexing, basic operations |
-| **Day 2** | Memory & Traversal | `00_Fundamentals/Memory_Model.md`, `Indexing_and_Traversal.md` | 2 hrs | Memory layout, pointer arithmetic, traversal patterns |
-| **Day 3** | Two Pointer (Part 1) | `01_Two_Pointer/Notes.md`, `Patterns.md` | 2-3 hrs | Opposite direction, fast-slow patterns |
-| **Day 4** | Two Pointer (Part 2) | `01_Two_Pointer/Problems/Easy.md`, `Medium.md` | 2-3 hrs | Solve 10 two-pointer problems |
-| **Day 5** | Sliding Window | `02_Sliding_Window/` (all files) | 3-4 hrs | Fixed/variable window techniques |
-| **Day 6** | Prefix Sum & Kadane | `03_Prefix_Sum/`, `04_Kadane/` (Notes) | 3 hrs | Range queries, max subarray |
-| **Day 7** | Practice Day 1 | Solve 15 Easy problems | 3-4 hrs | Consolidate learning |
+### Week 2: Intermediate (Days 8-14)
+- **Day 8**: [Prefix Sum Pattern](03_Prefix_Sum/) - Range queries, subarray counting
+- **Day 9**: [Kadane's Algorithm](04_Kadane/) - Maximum subarray sum/product
+- **Day 10-12**: [Medium Problems](06_Medium_Problems/) - 16 complete solutions with dry runs
+- **Day 13-14**: [Binary Search Basics](05_Binary_Search/) - BS on index and answers
 
-### Week 2: Advanced Patterns & Interview Prep
+### Week 3: Advanced (Days 15-21)
+- **Day 15-18**: [Binary Search Advanced](05_Binary_Search/) - BS on answers, 2D arrays (35 problems)
+- **Day 19-20**: [Hard Problems](07_Hard_Problems/) - 9 complete solutions with explanations
+- **Day 21**: [MCQs](10_MCQs/) + [Interview Prep](11_Interview_Prep/)
 
-| Day | Topic | Files | Time | Goals |
-|-----|-------|-------|------|-------|
-| **Day 8** | Binary Search | `05_Binary_Search/` (all files) | 3 hrs | Index & answer binary search |
-| **Day 9** | Vectors & STL | `06_Vector/` (all files) | 2 hrs | Dynamic arrays, STL algorithms |
-| **Day 10** | Pattern Recognition | `08_Tricks_And_Pattern_Recognition/` | 2 hrs | Keywords → Pattern mapping |
-| **Day 11** | Medium Problems | Solve 15 Medium problems | 4 hrs | Multi-pattern problems |
-| **Day 12** | Hard Problems | Solve 10 Hard problems | 4 hrs | Advanced optimizations |
-| **Day 13** | Interview Questions | `10_Interview_Questions/` | 3 hrs | Company-specific questions |
-| **Day 14** | Mock Test | MCQs + Timed problems | 3 hrs | Assess mastery |
+### Additional Resources
+- 📋 [Pattern Recognition Guide](08_Pattern_Recognition/Complete_Guide.md) - When to use what
+- ⚠️ [Common Mistakes](09_Common_Mistakes/Complete_Guide.md) - Debug all array errors
+- 📚 [Problem Index](PROBLEM_INDEX.md) - All 85+ problems with links
+- 📖 [Master Notes](ARRAY_MASTER_NOTES.md) - Quick reference guide
+
+---
+
+## 🗺️ Complete Learning Roadmap (21-Day Striver Plan)
+
+### Week 1: Array Fundamentals & Basic Problems (Days 1-7)
+
+| Day | Topic | Files | Time | Problems |
+|-----|-------|-------|------|----------|
+| **Day 1** | Array Basics | `00_Fundamentals/Array_Basics.md`, `Memory_Model.md` | 2-3 hrs | Theory only |
+| **Day 2** | Easy Problems I | `00_Fundamentals/Array_Easy_Problems.md` (Problems 1-8) | 3 hrs | Largest, Second Largest, Sorted Check, Remove Duplicates, Rotate, Move Zeros, Linear Search |
+| **Day 3** | Easy Problems II | `00_Fundamentals/Array_Easy_Problems.md` (Problems 9-15) | 3 hrs | Union, Missing Number, Consecutive Ones, Single Number, Subarray Sum K, Two Sum |
+| **Day 4** | Two Pointer (Part 1) | `01_Two_Pointer/Notes.md`, `Patterns.md` | 2-3 hrs | Pattern theory |
+| **Day 5** | Two Pointer (Part 2) | `01_Two_Pointer/Problems/Easy.md`, `Medium.md` | 3-4 hrs | 10 two-pointer problems |
+| **Day 6** | Sliding Window | `02_Sliding_Window/` (all files) | 3-4 hrs | Fixed/variable window |
+| **Day 7** | Practice Day | Solve 15 Easy problems from scratch | 4 hrs | Consolidate learning |
+
+### Week 2: Intermediate Patterns (Days 8-14)
+
+| Day | Topic | Files | Time | Problems |
+|-----|-------|-------|------|----------|
+| **Day 8** | Prefix Sum | `03_Prefix_Sum/` (Notes + Problems) | 3 hrs | Range queries, subarray counting |
+| **Day 9** | Kadane's Algorithm | `04_Kadane/` (Notes + Problems) | 3 hrs | Maximum subarray sum/product |
+| **Day 10** | Medium Problems I | Sort 0s 1s 2s, Majority Element, Kadane's, Stock Buy Sell | 3 hrs | 5 medium problems |
+| **Day 11** | Medium Problems II | Rearrange by Sign, Next Permutation, Leaders, Longest Consecutive | 3 hrs | 5 medium problems |
+| **Day 12** | Medium Problems III | Set Matrix Zeroes, Rotate Matrix, Spiral Matrix, Count Subarrays | 4 hrs | 4 matrix problems |
+| **Day 13** | Binary Search (Part 1) | `05_Binary_Search/Notes.md`, `Problems/Easy.md` | 3 hrs | BS basics, Lower/Upper bound, Floor/Ceil |
+| **Day 14** | Binary Search (Part 2) | `05_Binary_Search/Problems/Medium.md` | 4 hrs | Rotated arrays, Peak element |
+
+### Week 3: Advanced Binary Search & Hard Problems (Days 15-21)
+
+| Day | Topic | Files | Time | Problems |
+|-----|-------|-------|------|----------|
+| **Day 15** | BS on Answers I | `05_Binary_Search/Problems/Hard.md` (Problems 1-4) | 3 hrs | Square root, Koko, Smallest Divisor, Ship Packages |
+| **Day 16** | BS on Answers II | `05_Binary_Search/Problems/Hard.md` (Problems 5-8) | 3 hrs | Kth Missing, Aggressive Cows, Book Allocation |
+| **Day 17** | BS on Answers III | `05_Binary_Search/Problems/Hard.md` (Problems 9-12) | 3 hrs | Split Array, Painter's Partition, Gas Station |
+| **Day 18** | BS on 2D Arrays | `05_Binary_Search/Problems/2D_Arrays.md` | 3 hrs | 2D search, Peak II, Matrix Median |
+| **Day 19** | Hard Problems I | 3 Sum, 4 Sum, Majority Element-II | 4 hrs | Classic hard problems |
+| **Day 20** | Hard Problems II | Largest Sum 0, Count Subarrays XOR, Merge Intervals, Reverse Pairs | 4 hrs | Advanced hard |
+| **Day 21** | Mock Test | MCQs + Timed problems | 4 hrs | Assess mastery |
 
 ---
 
@@ -50,24 +92,28 @@ By completing this module, you will:
 ```
 02_Arrays/
 │
-├── 00_Fundamentals/                    ← Start here!
-│   ├── Array_Basics.md                 ← What are arrays?
-│   ├── Memory_Model.md                 ← How arrays work in RAM
-│   ├── Indexing_and_Traversal.md       ← Navigation patterns
-│   ├── Complexity_Analysis.md          ← Time/space complexity
-│   └── Vector_vs_Array.md              ← When to use which
+├── README.md                              ← Start here! Ultimate guide
+├── ARRAY_MASTER_NOTES.md                  ← Quick reference guide
+├── PROBLEM_INDEX.md                       ← All 85+ problems with links
 │
-├── 01_Two_Pointer/                     ← Most important pattern
-│   ├── Notes.md                        ← Pattern explanation
-│   ├── Patterns.md                     ← Pattern catalog
-│   ├── Mistakes.md                     ← Common errors
+├── 00_Fundamentals/                       ← Week 1: Days 1-2
+│   ├── 01_Array_Basics.md                 ← What are arrays, declaration, indexing
+│   ├── 02_Memory_Model.md                 ← How arrays stored in RAM
+│   ├── 03_Operations_Complexity.md        ← Access, insert, delete + complexity
+│   ├── 04_Vector_vs_Array.md              ← When to use which
+│   └── 05_Easy_Problems.md                ← 15 basic problems (Largest to Two Sum)
+│
+├── 01_Two_Pointer/                        ← Week 1: Days 3-5
+│   ├── Notes.md                           ← Pattern explanation
+│   ├── Patterns.md                        ← Pattern catalog
+│   ├── Mistakes.md                        ← Common errors
 │   └── Problems/
-│       ├── Easy.md                     ← 5+ problems
-│       ├── Medium.md                   ← 5+ problems
-│       └── Hard.md                     ← 5+ problems
+│       ├── Easy.md                        ← 5+ problems
+│       ├── Medium.md                      ← 5+ problems
+│       └── Hard.md                        ← 3+ problems
 │
-├── 02_Sliding_Window/                  ← Subarray problems
-│   ├── Notes.md
+├── 02_Sliding_Window/                     ← Week 1: Days 6-7
+│   ├── Notes.md                           ← Fixed/variable window patterns
 │   ├── Patterns.md
 │   ├── Mistakes.md
 │   └── Problems/
@@ -75,56 +121,154 @@ By completing this module, you will:
 │       ├── Medium.md
 │       └── Hard.md
 │
-├── 03_Prefix_Sum/                      ← Range queries
-│   ├── Notes.md
+├── 03_Prefix_Sum/                         ← Week 2: Day 8
+│   ├── Notes.md                           ← Range queries pattern
 │   ├── Patterns.md
 │   ├── Mistakes.md
 │   └── Problems/
-│       ├── Easy.md
-│       ├── Medium.md
+│       ├── Easy_Medium.md
 │       └── Hard.md
 │
-├── 04_Kadane/                          ← Max subarray
-│   ├── Notes.md
+├── 04_Kadane/                             ← Week 2: Day 9
+│   ├── Notes.md                           ← Maximum subarray pattern
 │   ├── Patterns.md
 │   ├── Mistakes.md
 │   └── Problems/
-│       ├── Easy.md
-│       ├── Medium.md
-│       └── Hard.md
+│       └── Medium_Hard.md
 │
-├── 05_Binary_Search/                   ← Optimized search
-│   ├── Notes.md
+├── 05_Binary_Search/                      ← Week 2-3: Days 10-18
+│   ├── Notes.md                           ← Complete BS guide (35 problems)
 │   ├── Patterns.md
 │   ├── Mistakes.md
 │   └── Problems/
-│       ├── Easy.md
-│       ├── Medium.md
-│       └── Hard.md
+│       ├── Easy.md                        ← BS basics (7 problems)
+│       ├── Medium.md                      ← Rotated arrays, peak (13 problems)
+│       ├── Hard.md                        ← BS on answers (12 problems)
+│       └── 2D_Arrays.md                   ← 2D BS (5 problems)
 │
-├── 06_Vector/                          ← C++ dynamic arrays
-│   ├── Notes.md
-│   ├── Patterns.md
-│   ├── Mistakes.md
-│   └── Problems/
-│       ├── Easy.md
-│       ├── Medium.md
-│       └── Hard.md
+├── 06_Medium_Problems/                    ← Week 2: Days 10-12
+│   └── Complete_Solutions.md              ← 16 medium problems with dry runs
 │
-├── 07_Common_Mistakes/
-│   └── Complete_Guide.md               ← Debug all array errors
+├── 07_Hard_Problems/                      ← Week 3: Days 19-20
+│   └── Complete_Solutions.md              ← 9 hard problems with explanations
 │
-├── 08_Tricks_And_Pattern_Recognition/
-│   └── Complete_Guide.md               ← Pattern identification guide
+├── 08_Pattern_Recognition/                ← Pattern identification
+│   └── Complete_Guide.md                  ← How to identify which pattern to use
 │
-├── 09_MCQs/
-│   └── Arrays_MCQs.md                  ← 100 practice MCQs
+├── 09_Common_Mistakes/                    ← Debugging guide
+│   └── Complete_Guide.md                  ← All array pitfalls
 │
-├── 10_Interview_Questions/
-│   └── Arrays_Interview.md             ← Company-tagged questions
+├── 10_MCQs/                               ← Self-assessment
+│   └── Arrays_MCQs.md                     ← 100 practice MCQs
 │
-└── README.md                           ← This file!
+└── 11_Interview_Prep/                     ← Company-wise questions
+    └── Company_Questions.md               ← Amazon, Google, Meta, etc.
 ```
+
+---
+
+## 📚 Complete Problem List (Striver Sheet)
+
+### 🟢 Easy Problems (15 problems)
+1. Largest Element in Array
+2. Second Largest Element
+3. Check if Array is Sorted
+4. Remove Duplicates from Sorted Array
+5. Left Rotate Array by One
+6. Left Rotate Array by K Places
+7. Move Zeros to End
+8. Linear Search
+9. Union of Two Sorted Arrays
+10. Find Missing Number
+11. Maximum Consecutive Ones
+12. Find the Number that Appears Once (Single Number)
+13. Longest Subarray with Sum K (Positives)
+14. Longest Subarray with Sum K (Positives & Negatives)
+15. Two Sum
+
+### 🟡 Medium Problems (20 problems)
+1. Sort an Array of 0's, 1's and 2's
+2. Majority Element-I
+3. Kadane's Algorithm (Maximum Subarray Sum)
+4. Print Subarray with Maximum Subarray Sum
+5. Stock Buy and Sell
+6. Rearrange Array Elements by Sign
+7. Next Permutation
+8. Leaders in an Array
+9. Longest Consecutive Sequence
+10. Set Matrix Zeroes
+11. Rotate Matrix by 90 Degrees
+12. Print Matrix in Spiral Manner
+13. Count Subarrays with Given Sum
+14. Pascal's Triangle-I
+15. Majority Element-II
+16. 3 Sum
+17. 4 Sum
+18. Largest Subarray with Sum 0
+19. Count Subarrays with Given XOR K
+20. Merge Overlapping Subintervals
+
+### 🔴 Hard Problems (15 problems)
+1. Merge Two Sorted Arrays without Extra Space
+2. Find the Repeating and Missing Number
+3. Count Inversions
+4. Reverse Pairs
+5. Maximum Product Subarray
+6. Search in Rotated Sorted Array-I
+7. Search in Rotated Sorted Array-II
+8. Median of 2 Sorted Arrays
+9. Kth Element of 2 Sorted Arrays
+10. Aggressive Cows
+11. Book Allocation Problem
+12. Split Array - Largest Sum
+13. Painter's Partition
+14. Minimize Max Distance to Gas Station
+15. Find Peak Element-II
+
+### 🔵 Binary Search Problems (35 problems)
+**BS on 1D Arrays - Basic (Easy)**
+1. Binary Search
+2. Lower Bound
+3. Upper Bound
+4. Search Insert Position
+5. Floor and Ceil
+6. First and Last Occurrence
+7. Count Occurrences
+
+**BS on 1D Arrays - Advanced (Medium)**
+8. Search in Rotated Sorted Array-I
+9. Search in Rotated Sorted Array-II
+10. Find Minimum in Rotated Sorted Array
+11. Find Rotation Count
+12. Single Element in Sorted Array
+13. Find Peak Element
+
+**BS on Answers (Medium)**
+14. Find Square Root
+15. Find Nth Root
+16. Koko Eating Bananas
+17. Minimum Days to Make M Bouquets
+18. Find the Smallest Divisor
+19. Capacity to Ship Packages
+20. Kth Missing Positive Number
+
+**BS on Answers (Hard)**
+21. Aggressive Cows
+22. Book Allocation Problem
+23. Split Array - Largest Sum
+24. Painter's Partition
+25. Minimize Max Distance to Gas Station
+
+**BS on 2D Arrays**
+26. Find Row with Maximum 1's
+27. Search in a 2D Matrix
+28. Search in 2D Matrix-II
+29. Find Peak Element-II
+30. Matrix Median
+
+**Classic Hard**
+31. Median of 2 Sorted Arrays
+32. Kth Element of 2 Sorted Arrays
 
 ---
 
