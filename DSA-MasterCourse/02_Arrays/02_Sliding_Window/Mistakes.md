@@ -16,6 +16,7 @@ if(currentSum > target) {
 }
 ```
 
+
 **Correct**:
 ```cpp
 while(currentSum > target && left <= right) {
