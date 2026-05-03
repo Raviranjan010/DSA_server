@@ -1,8 +1,8 @@
 # Two Pointer Technique — Complete Guide
 
-> **What You'll Learn**: Opposite direction, same direction, and Dutch National Flag patterns  
+> **What You'll Learn**: Opposite direction, same direction, Dutch National Flag, sliding window hybrid, and multi-pointer patterns  
 > **Prerequisites**: Array Basics, Indexing  
-> **Time Required**: 3-4 hours
+> **Time Required**: 4-5 hours
 
 ---
 
@@ -10,38 +10,42 @@
 
 The **Two Pointer** technique uses **two indices** to traverse an array simultaneously, reducing time complexity from O(n²) to O(n) by eliminating nested loops.
 
-**When to use**: When you need to compare pairs, search from both ends, or partition elements.
+**When to use**: When you need to compare pairs, search from both ends, partition elements, or maintain a window.
 
 ---
 
 ## 2. 🌍 Real-World Analogy
 
 ### Analogy 1: Bookends 📚
-
 Imagine holding a book from both sides:
 - Left hand = left pointer
 - Right hand = right pointer
 - You squeeze inward to find something in the middle
 
 ### Analogy 2: Conveyor Belt 🏭
-
 Two workers inspecting items on a belt:
 - Worker 1 starts from the beginning
 - Worker 2 starts from the end
 - They meet in the middle
 
+### Analogy 3: Fast & Slow Runner 🏃
+Two runners on a circular track:
+- Slow runner: 1 step at a time
+- Fast runner: 2 steps at a time
+- If there's a loop, they'll eventually meet!
+
 ---
 
 ## 3. 🎨 Visual Diagram
 
-### Pattern 1: Opposite Direction
+### Pattern 1: Opposite Direction (Converging)
 
 ```
 Array: [1, 3, 5, 7, 9, 11, 13]
-        L                 R     ← Start: left=0, right=6
-           L           R        ← Move inward
-              L     R           ← Continue
-                 L,R            ← Meet! Stop
+        L                  R     ← Start: left=0, right=6
+           L            R        ← Move inward
+              L      R           ← Continue
+                 L,R             ← Meet! Stop
 
 Used for: Sorted arrays, finding pairs, palindrome checks
 ```
@@ -50,27 +54,56 @@ Used for: Sorted arrays, finding pairs, palindrome checks
 
 ```
 Array: [1, 2, 3, 4, 5, 6, 7, 8]
-        S  F                    ← Start: slow=0, fast=0
-           S     F              ← Fast moves 2x speed
-              S        F        ← Fast ahead of slow
-                 S           F  ← Gap increases
+        S  F                     ← Start: slow=0, fast=0
+           S     F               ← Fast moves ahead
+              S        F         ← Fast ahead of slow
+                 S           F   ← Gap increases
 
 Used for: Cycle detection, remove duplicates, find middle
+```
+
+### Pattern 3: Dutch National Flag (Three Pointers)
+
+```
+Array: [2, 0, 1, 2, 0, 1]
+        low                      ← 0s go here
+            mid                  ← current scan
+                          high   ← 2s go here
+
+Region:  [0s | 1s | unknown | 2s]
+              low  mid      high
+
+Used for: 3-way partition, sort colors
+```
+
+### Pattern 4: Sliding Window (Two Pointers as Window Boundary)
+
+```
+Array: [1, 3, -1, -3, 5, 3, 6, 7]  Window size = 3
+        [L        R]                 ← Window expands right
+           [L        R]              ← Window slides
+              [L        R]           ← Continues...
+
+Used for: Subarray problems, min/max in window
 ```
 
 ---
 
 ## 4. 🔑 Pattern Recognition Keywords
 
-**Look for these words in problems**:
-- "Sorted array"
-- "Find pair/triplet"
-- "Reverse"
-- "Partition"
-- "Two elements that sum to X"
-- "Remove duplicates"
-- "Palindrome"
-- "Container with most water"
+| Keyword in Problem | Likely Pattern |
+|---|---|
+| "sorted array" + "pair/sum" | Opposite Direction |
+| "palindrome" | Opposite Direction |
+| "reverse in-place" | Opposite Direction |
+| "remove duplicates" | Same Direction (Fast/Slow) |
+| "move zeroes" / "filter in-place" | Same Direction |
+| "cycle detection" | Same Direction (Floyd's) |
+| "find middle" | Same Direction (Fast 2x, Slow 1x) |
+| "sort 0s 1s 2s" / "partition 3 groups" | Dutch National Flag |
+| "minimum subarray" / "maximum window" | Sliding Window |
+| "triplet sum" / "3Sum" | Sorting + Two Pointer |
+| "container with most water" | Opposite Direction |
 
 ---
 
@@ -83,18 +116,21 @@ Used for: Cycle detection, remove duplicates, find middle
 #include <vector>
 using namespace std;
 
-void twoPointerOpposite(vector<int>& arr) {
-    int left = 0;              // Start from beginning
-    int right = arr.size() - 1; // Start from end
-    
-    while(left < right) {
-        // Process arr[left] and arr[right]
-        
-        // Move pointers based on condition
-        if(/* condition */) {
-            left++;   // Move left pointer right
+void twoPointerOpposite(vector<int>& arr, int target) {
+    int left = 0;
+    int right = arr.size() - 1;
+
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+
+        if (sum == target) {
+            // Found! Process result
+            left++;
+            right--;
+        } else if (sum < target) {
+            left++;   // Need larger sum → move left right
         } else {
-            right--;  // Move right pointer left
+            right--;  // Need smaller sum → move right left
         }
     }
 }
@@ -103,258 +139,359 @@ void twoPointerOpposite(vector<int>& arr) {
 ### Template 2: Same Direction (Fast/Slow)
 
 ```cpp
-#include <iostream>
-#include <vector>
-using namespace std;
-
 void twoPointerSameDirection(vector<int>& arr) {
-    int slow = 0;  // Slow pointer
-    int fast = 0;  // Fast pointer
-    
-    while(fast < arr.size()) {
-        // Fast pointer moves every iteration
-        // Slow pointer moves conditionally
-        
-        if(/* condition */) {
+    int slow = 0;
+
+    for (int fast = 0; fast < arr.size(); fast++) {
+        if (/* condition to keep arr[fast] */) {
             arr[slow] = arr[fast];
             slow++;
         }
-        
-        fast++;
+        // fast always advances; slow only when condition met
     }
+    // slow = new effective length
 }
 ```
 
----
-
-## 6. 🔍 Step-by-Step Example
-
-### Problem: Two Sum II (Sorted Array)
-
-**Problem**: Find two numbers that add up to target.
+### Template 3: Dutch National Flag
 
 ```cpp
-#include <iostream>
-#include <vector>
-using namespace std;
+void dutchFlag(vector<int>& nums) {
+    int low = 0, mid = 0, high = nums.size() - 1;
 
-vector<int> twoSum(vector<int>& numbers, int target) {
-    int left = 0;
-    int right = numbers.size() - 1;
-    
-    while(left < right) {
-        int sum = numbers[left] + numbers[right];
-        
-        if(sum == target) {
-            return {left + 1, right + 1};  // 1-indexed
-        } else if(sum < target) {
-            left++;   // Need larger sum
-        } else {
-            right--;  // Need smaller sum
+    while (mid <= high) {
+        if (nums[mid] == 0) {
+            swap(nums[low], nums[mid]);
+            low++; mid++;
+        } else if (nums[mid] == 1) {
+            mid++;
+        } else { // nums[mid] == 2
+            swap(nums[mid], nums[high]);
+            high--;
+            // NOTE: do NOT increment mid here!
         }
     }
-    
-    return {};  // No solution
-}
-
-int main() {
-    vector<int> nums = {2, 7, 11, 15};
-    int target = 9;
-    
-    vector<int> result = twoSum(nums, target);
-    cout << "Indices: " << result[0] << ", " << result[1] << endl;
-    // Output: 1, 2 (because 2 + 7 = 9)
-    
-    return 0;
 }
 ```
 
-**Dry Run**:
+### Template 4: Sliding Window (Variable Size)
+
+```cpp
+void slidingWindow(vector<int>& arr, int target) {
+    int left = 0;
+    int windowSum = 0;
+    int result = INT_MAX;
+
+    for (int right = 0; right < arr.size(); right++) {
+        windowSum += arr[right];  // Expand window
+
+        while (windowSum >= target) {  // Shrink window
+            result = min(result, right - left + 1);
+            windowSum -= arr[left];
+            left++;
+        }
+    }
+}
 ```
-Array: [2, 7, 11, 15], Target: 9
-        L          R
 
-Step 1: sum = 2 + 15 = 17 > 9
-        Need smaller sum → right--
-        
-Array: [2, 7, 11, 15]
-        L     R
+### Template 5: Floyd's Cycle Detection (Linked List)
 
-Step 2: sum = 2 + 11 = 13 > 9
-        Need smaller sum → right--
-        
-Array: [2, 7, 11, 15]
-        L  R
+```cpp
+bool hasCycle(ListNode* head) {
+    ListNode* slow = head;
+    ListNode* fast = head;
 
-Step 3: sum = 2 + 7 = 9 == 9 ✓
-        Found! Return {1, 2}
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if (slow == fast) return true;  // Cycle found
+    }
+
+    return false;  // No cycle
+}
 ```
 
 ---
 
-## 7. ⚠️ Common Mistakes
+## 6. 🔍 Step-by-Step Examples
 
-### Mistake 1: Wrong Initialization
+### Example 1: Two Sum II (Sorted Array)
+
 ```cpp
-// WRONG
-int left = 1;              // Should be 0
-int right = arr.size();    // Should be size - 1
+vector<int> twoSum(vector<int>& numbers, int target) {
+    int left = 0, right = numbers.size() - 1;
 
-// CORRECT
-int left = 0;
-int right = arr.size() - 1;
-```
+    while (left < right) {
+        int sum = numbers[left] + numbers[right];
 
-### Mistake 2: Wrong Loop Condition
-```cpp
-// WRONG
-while(left <= right) {  // May process same element twice
-    // ...
-}
-
-// CORRECT (for most cases)
-while(left < right) {
-    // ...
-}
-```
-
-### Mistake 3: Forgetting to Move Pointers
-```cpp
-while(left < right) {
-    if(arr[left] + arr[right] == target) {
-        return {left, right};
+        if (sum == target) return {left + 1, right + 1};
+        else if (sum < target) left++;
+        else right--;
     }
-    // FORGOT to move pointers! Infinite loop!
-    
-    // CORRECT:
-    if(arr[left] + arr[right] < target) {
-        left++;
-    } else {
-        right--;
-    }
+
+    return {};
 }
+
+// Dry Run: [2, 7, 11, 15], target = 9
+// Step 1: 2+15=17 > 9 → right--
+// Step 2: 2+11=13 > 9 → right--
+// Step 3: 2+7=9 == 9 → return {1, 2} ✓
 ```
+
+### Example 2: Container With Most Water
+
+```cpp
+int maxArea(vector<int>& height) {
+    int left = 0, right = height.size() - 1;
+    int maxWater = 0;
+
+    while (left < right) {
+        int h = min(height[left], height[right]);
+        int w = right - left;
+        maxWater = max(maxWater, h * w);
+
+        // Move the shorter wall — moving the taller one can never help
+        if (height[left] < height[right]) left++;
+        else right--;
+    }
+
+    return maxWater;
+}
+
+// Key Insight: Water = min(height[L], height[R]) × (R - L)
+// Moving the shorter pointer might find a taller one
+// Moving the taller pointer only reduces width, never helps
+```
+
+---
+
+## 7. ⚠️ Common Mistakes (Quick Reference)
+
+| # | Mistake | Fix |
+|---|---------|-----|
+| 1 | `left=1` or `right=size` | Always `left=0`, `right=size-1` |
+| 2 | Wrong loop condition | Pairs → `left < right`; search → `left <= right` |
+| 3 | Forgetting to move pointers | Every branch must advance at least one pointer |
+| 4 | Not sorting when required | Sort first if order doesn't matter |
+| 5 | Missing duplicate skip | Add inner while loops to skip same values |
+| 6 | Integer overflow on sum | Cast to `long long` before adding |
+| 7 | Dutch Flag: not moving mid after swap with low | `low++; mid++;` always together |
+| 8 | Dutch Flag: moving mid after swap with high | DON'T do `mid++` after `swap(mid, high)` |
+
+See `Mistakes.md` for detailed explanations →
 
 ---
 
 ## 8. ⏱️ Time & Space Complexity
 
-| Operation | Time | Space | Reasoning |
-|-----------|------|-------|-----------|
-| Two Pointer (opposite) | **O(n)** | **O(1)** | Each element visited once |
-| Two Pointer (same direction) | **O(n)** | **O(1)** | Single pass through array |
-| Brute Force (nested loops) | O(n²) | O(1) | All pairs checked |
+| Pattern | Time | Space | Reasoning |
+|---------|------|-------|-----------|
+| Opposite Direction | **O(n)** | **O(1)** | Each element visited at most once |
+| Same Direction | **O(n)** | **O(1)** | Single pass, slow ≤ fast always |
+| Dutch National Flag | **O(n)** | **O(1)** | Each element processed exactly once |
+| Sliding Window | **O(n)** | **O(1)** | Each element enters/exits window once |
+| With Sorting | **O(n log n)** | **O(1)** | Sorting dominates |
+| Brute Force (baseline) | O(n²) | O(1) | All pairs checked |
 
-**Why O(n) and not O(n/2)?**
-- Constants are dropped in Big-O
-- n/2 = O(n) mathematically
+> **Why O(n) and not O(n/2)?** Constants are dropped in Big-O. n/2 = O(n) mathematically.
 
 ---
 
-## 9. 📝 Pattern Variations
+## 9. 📝 All Pattern Variations
 
-### Variation 1: Dutch National Flag (3-Way Partition)
+### Variation 1: Opposite Direction
+
+**Classic problems**: Two Sum II, Valid Palindrome, Container With Most Water, Reverse String.
 
 ```cpp
-#include <iostream>
-#include <vector>
-using namespace std;
+// Generic template
+int left = 0, right = n - 1;
+while (left < right) {
+    if (condition_satisfied) { /* process */ left++; right--; }
+    else if (need_more)  left++;
+    else                 right--;
+}
+```
 
-void sortColors(vector<int>& nums) {
-    int low = 0;      // Boundary for 0s
-    int mid = 0;      // Current element
-    int high = nums.size() - 1;  // Boundary for 2s
-    
-    while(mid <= high) {
-        if(nums[mid] == 0) {
-            swap(nums[low], nums[mid]);
-            low++;
-            mid++;
-        } else if(nums[mid] == 1) {
-            mid++;
-        } else {  // nums[mid] == 2
-            swap(nums[mid], nums[high]);
-            high--;
-        }
+### Variation 2: Same Direction (Filter/Compact)
+
+**Classic problems**: Remove Duplicates, Move Zeroes, Remove Element.
+
+```cpp
+// Slow tracks "write position", fast scans array
+int slow = 0;
+for (int fast = 0; fast < n; fast++) {
+    if (should_keep(arr[fast])) arr[slow++] = arr[fast];
+}
+// arr[0..slow-1] is the result
+```
+
+### Variation 3: Fast 2×, Slow 1× (Cycle / Middle)
+
+**Classic problems**: Linked List Cycle, Find Middle of List, Happy Number.
+
+```cpp
+// Floyd's tortoise & hare
+slow = slow->next;
+fast = fast->next->next;
+// Meet → cycle exists; fast reaches null → no cycle
+```
+
+### Variation 4: Dutch National Flag
+
+**Classic problems**: Sort Colors, 3-way partition, QuickSort pivot.
+
+```cpp
+// Maintain: [0s | 1s | unknown | 2s]
+//            0..low-1  low..mid-1  mid..high  high+1..n-1
+```
+
+### Variation 5: Sliding Window (Fixed Size)
+
+**Classic problems**: Max Sum Subarray of Size K, Average of Subarrays.
+
+```cpp
+// Fixed window of size k
+int windowSum = 0;
+for (int i = 0; i < k; i++) windowSum += arr[i];
+int maxSum = windowSum;
+
+for (int i = k; i < n; i++) {
+    windowSum += arr[i] - arr[i - k];   // slide: add new, remove old
+    maxSum = max(maxSum, windowSum);
+}
+```
+
+### Variation 6: Sliding Window (Variable Size)
+
+**Classic problems**: Minimum Size Subarray Sum, Longest Substring Without Repeating Chars.
+
+```cpp
+int left = 0, windowSum = 0, result = INT_MAX;
+for (int right = 0; right < n; right++) {
+    windowSum += arr[right];
+    while (windowSum >= target) {
+        result = min(result, right - left + 1);
+        windowSum -= arr[left++];
     }
 }
+```
 
-int main() {
-    vector<int> nums = {2, 0, 2, 1, 1, 0};
-    sortColors(nums);
-    
-    for(int x : nums) {
-        cout << x << " ";  // 0 0 1 1 2 2
-    }
-    
-    return 0;
+### Variation 7: Multi-Pointer (k-Sum Extensions)
+
+**Classic problems**: 3Sum, 3Sum Closest, 4Sum.
+
+```cpp
+// 3Sum = fix one element + two-pointer on rest
+sort(nums.begin(), nums.end());
+for (int i = 0; i < n - 2; i++) {
+    if (i > 0 && nums[i] == nums[i-1]) continue; // skip dup
+    int left = i + 1, right = n - 1;
+    while (left < right) { /* two-pointer logic */ }
 }
 ```
 
 ---
 
-## 10. 💡 Pro Tips
+## 10. 🧩 When Two Pointer vs Other Techniques
+
+| Situation | Use |
+|-----------|-----|
+| Sorted array, find pair | **Two Pointer (Opposite)** |
+| Unsorted, find pair | Hash Map O(n) or Sort + Two Pointer |
+| Subarray sum/max | **Sliding Window** |
+| Cycle in linked list | **Fast/Slow Pointer** |
+| All combinations (not pairs) | Backtracking / nested loops |
+| Order must be preserved | Hash Map (can't sort) |
+| k closest / k largest | Heap |
+
+---
+
+## 11. 💡 Pro Tips
 
 1. **Sort first** — Many two-pointer problems require sorted input
 2. **Draw it out** — Visualize pointer movement on paper
 3. **Check boundaries** — Ensure pointers don't go out of bounds
-4. **Handle duplicates** — Skip them if problem requires unique pairs
-5. **Think about movement** — When to move left vs right pointer?
+4. **Handle duplicates** — Skip them if problem requires unique results
+5. **Think about movement** — When to move left vs right?
+6. **Identify invariants** — What is always true at start of each iteration?
+7. **Test with 2 elements** — Smallest non-trivial case catches most bugs
+8. **Empty array check first** — Prevents null-pointer / out-of-bounds
 
 ---
 
-## 11. 🎯 When to Use Two Pointer
+## 12. 🎯 When to Use Two Pointer
 
 ✅ **Use when**:
 - Array is sorted (or can be sorted)
-- Looking for pairs/triplets
+- Looking for pairs/triplets with sum condition
 - Need to compare elements from both ends
-- Partitioning elements
-- Removing duplicates in-place
+- Partitioning elements in-place
+- Removing/filtering duplicates in-place
+- Finding cycle or middle in linked list
 
 ❌ **Don't use when**:
-- Array is unsorted and can't be sorted
-- Need to find all combinations (use nested loops)
-- Elements need to maintain original order
+- Array is unsorted and can't be sorted (use hash map)
+- Need ALL combinations, not just one pair
+- Elements must maintain original relative order (use hash map)
+- Need to find k-th element (use heap or quickselect)
 
 ---
 
-## 12. 📚 Practice Problems
+## 13. 📚 Practice Problems
 
-### Easy (Start Here)
-1. Valid Palindrome (LeetCode 125)
-2. Reverse String (LeetCode 344)
-3. Remove Duplicates from Sorted Array (LeetCode 26)
-4. Two Sum II (LeetCode 167)
-5. Squares of Sorted Array (LeetCode 977)
+### Easy (Master basics — start here)
+| # | Problem | LeetCode | Pattern |
+|---|---------|----------|---------|
+| 1 | Valid Palindrome | 125 | Opposite |
+| 2 | Reverse String | 344 | Opposite |
+| 3 | Remove Duplicates from Sorted Array | 26 | Same Dir |
+| 4 | Two Sum II | 167 | Opposite |
+| 5 | Squares of Sorted Array | 977 | Opposite |
+| 6 | Move Zeroes | 283 | Same Dir |
+| 7 | Remove Element | 27 | Same Dir |
 
-### Medium
-1. Container With Most Water (LeetCode 11)
-2. 3Sum (LeetCode 15)
-3. 4Sum (LeetCode 18)
-4. Trapping Rain Water (LeetCode 42)
-5. Remove Nth Node From End (LeetCode 19)
+### Medium (Core interview level)
+| # | Problem | LeetCode | Pattern |
+|---|---------|----------|---------|
+| 1 | Container With Most Water | 11 | Opposite |
+| 2 | 3Sum | 15 | Sort + Opposite |
+| 3 | 3Sum Closest | 16 | Sort + Opposite |
+| 4 | Trapping Rain Water | 42 | Opposite |
+| 5 | Remove Nth Node From End | 19 | Fast/Slow |
+| 6 | Sort Colors | 75 | Dutch Flag |
+| 7 | Minimum Size Subarray Sum | 209 | Sliding Window |
+| 8 | Longest Substring Without Repeating | 3 | Sliding Window |
+| 9 | Fruit Into Baskets | 904 | Sliding Window |
 
-### Hard
-1. Trapping Rain Water (LeetCode 42)
-2. Minimum Window Substring (LeetCode 76)
-3. Sliding Window Maximum (LeetCode 239)
-4. Median of Two Sorted Arrays (LeetCode 4)
+### Hard (Advanced / FAANG)
+| # | Problem | LeetCode | Pattern |
+|---|---------|----------|---------|
+| 1 | Minimum Window Substring | 76 | Sliding Window + Map |
+| 2 | Sliding Window Maximum | 239 | Monotonic Deque |
+| 3 | Median of Two Sorted Arrays | 4 | Binary Search |
+| 4 | Trapping Rain Water (Hard variant) | 407 (3D) | BFS |
+| 5 | 4Sum | 18 | Sort + Two Pointer |
+| 6 | Longest Consecutive Sequence | 128 | Hash Set |
 
 ---
 
-## 13. 🎯 Key Takeaways
+## 14. 🎯 Key Takeaways
 
-1. Two pointers reduce O(n²) to O(n)
-2. **Opposite direction**: Start from both ends, move inward
-3. **Same direction**: Fast and slow pointers
-4. **Dutch flag**: Three pointers for 3-way partition
-5. Works best on **sorted arrays**
-6. Watch for **off-by-one errors** in loop conditions
+1. Two pointers reduce O(n²) to O(n) by avoiding redundant comparisons
+2. **Opposite direction**: Start from both ends, converge inward — for sorted pairs
+3. **Same direction**: Fast scans, slow tracks valid position — for filtering
+4. **Fast 2×/Slow 1×**: Floyd's algorithm — for cycle detection and middle finding
+5. **Dutch flag**: Three pointers for 3-way partition
+6. **Sliding window**: Treats left/right pointers as a moving window boundary
 7. Always **move pointers** to avoid infinite loops
+8. Always **sort first** unless order matters
+9. Watch for **off-by-one errors** in loop conditions (`<` vs `<=`)
+10. Handle **duplicates** explicitly with inner skip loops
 
 ---
 
 **Next**: Solve problems in `Problems/` folder! →
 
-[← Back to README](../README.md) | [Problems →](Problems/Easy.md)
+[← Back to README](../README.md) | [Patterns →](Patterns.md) | [Easy Problems →](Easy.md)

@@ -1,8 +1,8 @@
 # Two Pointer — Easy Problems
 
-> **5 essential easy problems to master the basics**  
-> **Prerequisites**: `01_Two_Pointer/Notes.md`, `Patterns.md`  
-> **Time Required**: 2-3 hours
+> **8 essential easy problems to master the basics**  
+> **Prerequisites**: `Notes.md`, `Patterns.md`  
+> **Time Required**: 3-4 hours
 
 ---
 
@@ -10,109 +10,56 @@
 
 **Source**: https://leetcode.com/problems/valid-palindrome/  
 **Difficulty**: 🟢 Easy  
-**Company Tags**: 🏢 Amazon, Facebook  
+**Company Tags**: 🏢 Amazon, Facebook, Microsoft  
 **Frequency**: 📅 Very High
 
 ### Problem Statement
-Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+Given a string, determine if it is a palindrome considering only alphanumeric characters and ignoring cases.
 
 ### Examples
 ```
 Input: "A man, a plan, a canal: Panama"
 Output: true
-Explanation: "amanaplanacanalpanama" is a palindrome
 
 Input: "race a car"
 Output: false
-Explanation: "raceacar" is not a palindrome
 ```
 
-### Pattern Identification
-**Keywords**: "palindrome", "reads same forwards and backwards"  
-**Pattern**: Two Pointer (Opposite Direction)
-
-### Approach
-
-#### Brute Force (O(n) space)
-1. Create new string with only alphanumeric chars
-2. Reverse it and compare
-3. **Problem**: Uses extra O(n) space
-
-#### Optimized Two Pointer (O(1) space)
-1. Use two pointers from both ends
-2. Skip non-alphanumeric characters
-3. Compare characters (case-insensitive)
-4. If mismatch found → not palindrome
+### Pattern: Opposite Direction Two Pointer
 
 ### Complete Solution
 ```cpp
-#include <iostream>
-#include <string>
-#include <cctype>
-using namespace std;
-
 class Solution {
 public:
     bool isPalindrome(string s) {
-        int left = 0;
-        int right = s.size() - 1;
-        
-        while(left < right) {
-            // Skip non-alphanumeric from left
-            while(left < right && !isalnum(s[left])) {
-                left++;
-            }
-            
-            // Skip non-alphanumeric from right
-            while(left < right && !isalnum(s[right])) {
-                right--;
-            }
-            
-            // Compare characters (convert to lowercase)
-            if(tolower(s[left]) != tolower(s[right])) {
-                return false;
-            }
-            
-            // Move both pointers
-            left++;
-            right--;
+        int left = 0, right = s.size() - 1;
+
+        while (left < right) {
+            while (left < right && !isalnum(s[left]))  left++;
+            while (left < right && !isalnum(s[right])) right--;
+
+            if (tolower(s[left]) != tolower(s[right])) return false;
+
+            left++; right--;
         }
-        
+
         return true;
     }
 };
-
-int main() {
-    Solution sol;
-    string s1 = "A man, a plan, a canal: Panama";
-    cout << boolalpha << sol.isPalindrome(s1) << endl;  // true
-    
-    string s2 = "race a car";
-    cout << boolalpha << sol.isPalindrome(s2) << endl;  // false
-    
-    return 0;
-}
 ```
 
 ### Edge Cases
-1. ✅ Empty string → true
-2. ✅ Single character → true
-3. ✅ All special characters → true
-4. ✅ Mixed case letters
-5. ✅ String with spaces
+- ✅ Empty string → true
+- ✅ Single character → true
+- ✅ All special characters → true (empty after filtering)
+- ✅ Mixed case "RaceCar" → true
+- ✅ Numbers "12321" → true
 
-### Complexity
-- **Time**: O(n) - Each character visited at most once
-- **Space**: O(1) - Only two pointers used
-
-### Similar Problems
-1. Valid Palindrome II (LeetCode 680)
-2. Reverse String (LeetCode 344)
-3. Palindrome Linked List (LeetCode 234)
+### Complexity: Time O(n), Space O(1)
 
 ---
 
-## Problem 2: Two Sum II - Input Array Is Sorted
+## Problem 2: Two Sum II — Input Array Is Sorted
 
 **Source**: https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/  
 **Difficulty**: 🟢 Easy  
@@ -120,79 +67,50 @@ int main() {
 **Frequency**: 📅 Very High
 
 ### Problem Statement
-Given a 1-indexed sorted array, find two numbers that add up to a target. Return their 1-based indices.
+Given a 1-indexed sorted array, find two numbers that add up to target. Return their 1-based indices.
 
 ### Examples
 ```
 Input: numbers = [2,7,11,15], target = 9
 Output: [1,2]
-Explanation: 2 + 7 = 9, indices are 1 and 2
 ```
 
-### Pattern Identification
-**Keywords**: "sorted array", "two numbers", "add up to target"  
-**Pattern**: Two Pointer (Opposite Direction)
-
-### Approach
-
-#### Brute Force (O(n²))
-```cpp
-for(int i = 0; i < n; i++) {
-    for(int j = i + 1; j < n; j++) {
-        if(numbers[i] + numbers[j] == target) {
-            return {i+1, j+1};
-        }
-    }
-}
-```
-
-#### Optimized Two Pointer (O(n))
-- Array is sorted!
-- If sum < target → need larger sum → move left pointer right
-- If sum > target → need smaller sum → move right pointer left
+### Pattern: Opposite Direction Two Pointer
 
 ### Complete Solution
 ```cpp
-#include <vector>
-using namespace std;
-
 class Solution {
 public:
     vector<int> twoSum(vector<int>& numbers, int target) {
-        int left = 0;
-        int right = numbers.size() - 1;
-        
-        while(left < right) {
+        int left = 0, right = numbers.size() - 1;
+
+        while (left < right) {
             int sum = numbers[left] + numbers[right];
-            
-            if(sum == target) {
-                return {left + 1, right + 1};  // 1-indexed
-            } else if(sum < target) {
-                left++;   // Need larger sum
-            } else {
-                right--;  // Need smaller sum
-            }
+
+            if      (sum == target) return {left + 1, right + 1};
+            else if (sum < target)  left++;
+            else                    right--;
         }
-        
-        return {};  // No solution (problem guarantees one exists)
+
+        return {};
     }
 };
 ```
 
+### Dry Run
+```
+[2, 7, 11, 15], target = 9
+ L              R   → 2+15=17 > 9, right--
+ L          R       → 2+11=13 > 9, right--
+ L      R           → 2+7=9 == 9 ✓ return {1,2}
+```
+
 ### Edge Cases
-1. ✅ Exactly two elements in array
-2. ✅ Negative numbers present
-3. ✅ Multiple valid pairs (return any)
-4. ✅ Target is sum of adjacent elements
+- ✅ Exactly two elements
+- ✅ Negative numbers in array
+- ✅ Answer is adjacent elements
 
-### Complexity
-- **Time**: O(n) - Each element visited at most once
-- **Space**: O(1) - Only two pointers
-
-### Similar Problems
-1. Two Sum (LeetCode 1) - Unsorted version, use hash map
-2. 3Sum (LeetCode 15) - Extend to three numbers
-3. Two Sum Less Than K (LeetCode 1099)
+### Complexity: Time O(n), Space O(1)
 
 ---
 
@@ -204,51 +122,28 @@ public:
 **Frequency**: 📅 High
 
 ### Problem Statement
-Write a function that reverses a string in-place with O(1) extra memory.
+Write a function that reverses a string in-place using O(1) extra memory.
 
-### Examples
-```
-Input: ["h","e","l","l","o"]
-Output: ["o","l","l","e","h"]
-```
-
-### Pattern Identification
-**Keywords**: "reverse", "in-place"  
-**Pattern**: Two Pointer (Opposite Direction)
+### Pattern: Opposite Direction Two Pointer
 
 ### Complete Solution
 ```cpp
-#include <vector>
-#include <utility>
-using namespace std;
-
 class Solution {
 public:
     void reverseString(vector<char>& s) {
-        int left = 0;
-        int right = s.size() - 1;
-        
-        while(left < right) {
-            // Swap characters
+        int left = 0, right = s.size() - 1;
+
+        while (left < right) {
             swap(s[left], s[right]);
-            
-            // Move pointers
-            left++;
-            right--;
+            left++; right--;
         }
     }
 };
 ```
 
-### Edge Cases
-1. ✅ Empty array
-2. ✅ Single character
-3. ✅ Even length string
-4. ✅ Odd length string
+### Edge Cases: Empty, single char, even/odd length — all handled correctly.
 
-### Complexity
-- **Time**: O(n) - Swap n/2 pairs
-- **Space**: O(1) - In-place reversal
+### Complexity: Time O(n), Space O(1)
 
 ---
 
@@ -260,70 +155,54 @@ public:
 **Frequency**: 📅 Very High
 
 ### Problem Statement
-Remove duplicates from sorted array in-place such that each element appears only once. Return the new length.
+Remove duplicates from sorted array in-place so each element appears only once. Return the new length.
 
 ### Examples
 ```
-Input: nums = [1,1,2]
-Output: 2, nums = [1,2,_]
-Explanation: First 2 elements are unique
-
-Input: nums = [0,0,1,1,1,2,2,3,3,4]
-Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+Input: [0,0,1,1,1,2,2,3,3,4]
+Output: 5, array = [0,1,2,3,4,_,_,_,_,_]
 ```
 
-### Pattern Identification
-**Keywords**: "remove duplicates", "in-place", "sorted array"  
-**Pattern**: Two Pointer (Same Direction)
+### Pattern: Same Direction Fast/Slow
 
 ### Complete Solution
 ```cpp
-#include <vector>
-using namespace std;
-
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        if(nums.empty()) return 0;
-        
-        int slow = 0;  // Points to last unique element
-        
-        for(int fast = 1; fast < nums.size(); fast++) {
-            // Found new unique element
-            if(nums[fast] != nums[slow]) {
+        if (nums.empty()) return 0;
+
+        int slow = 0;
+
+        for (int fast = 1; fast < nums.size(); fast++) {
+            if (nums[fast] != nums[slow]) {
                 slow++;
                 nums[slow] = nums[fast];
             }
         }
-        
-        return slow + 1;  // Length is index + 1
+
+        return slow + 1;
     }
 };
 ```
 
 ### Dry Run
 ```
-nums = [0,0,1,1,1,2,2,3,3,4]
-        s
-           f
-
-Step 1: nums[1]=0 == nums[0]=0 → skip
-Step 2: nums[2]=1 != nums[0]=0 → slow=1, nums[1]=1
-Step 3: nums[3]=1 == nums[1]=1 → skip
-...
-Result: slow=4, return 5
-First 5 elements: [0,1,2,3,4]
+[0, 0, 1, 1, 2]
+ s  f
+nums[1]=0 == nums[0]=0  → skip
+nums[2]=1 != nums[0]=0  → slow=1, nums[1]=1
+nums[3]=1 == nums[1]=1  → skip
+nums[4]=2 != nums[1]=1  → slow=2, nums[2]=2
+Return slow+1 = 3
 ```
 
 ### Edge Cases
-1. ✅ Empty array → return 0
-2. ✅ Single element → return 1
-3. ✅ All same elements → return 1
-4. ✅ All unique elements → return n
+- ✅ Empty array → 0
+- ✅ All same → 1
+- ✅ All unique → n
 
-### Complexity
-- **Time**: O(n) - Single pass
-- **Space**: O(1) - In-place
+### Complexity: Time O(n), Space O(1)
 
 ---
 
@@ -335,7 +214,7 @@ First 5 elements: [0,1,2,3,4]
 **Frequency**: 📅 High
 
 ### Problem Statement
-Move all zeroes to the end of array while maintaining relative order of non-zero elements. Do this in-place.
+Move all zeroes to the end while maintaining relative order of non-zero elements. In-place.
 
 ### Examples
 ```
@@ -343,65 +222,246 @@ Input: [0,1,0,3,12]
 Output: [1,3,12,0,0]
 ```
 
-### Pattern Identification
-**Keywords**: "move", "in-place", "maintain order"  
-**Pattern**: Two Pointer (Same Direction)
+### Pattern: Same Direction Fast/Slow
 
 ### Complete Solution
 ```cpp
-#include <vector>
-using namespace std;
-
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
         int slow = 0;
-        
-        // Move all non-zeroes to front
-        for(int fast = 0; fast < nums.size(); fast++) {
-            if(nums[fast] != 0) {
-                nums[slow] = nums[fast];
-                slow++;
+
+        for (int fast = 0; fast < nums.size(); fast++) {
+            if (nums[fast] != 0) {
+                nums[slow++] = nums[fast];
             }
         }
-        
-        // Fill remaining positions with 0
-        while(slow < nums.size()) {
-            nums[slow] = 0;
-            slow++;
+
+        while (slow < nums.size()) {
+            nums[slow++] = 0;
         }
     }
 };
 ```
 
 ### Edge Cases
-1. ✅ No zeroes → no change
-2. ✅ All zeroes → same array
-3. ✅ Zero at beginning
-4. ✅ Zero at end
-5. ✅ Alternating zeroes
+- ✅ No zeroes → array unchanged
+- ✅ All zeroes → all zeroes at end (same)
+- ✅ Zero at beginning / at end
 
-### Complexity
-- **Time**: O(n) - Two passes
-- **Space**: O(1) - In-place
+### Complexity: Time O(n), Space O(1)
 
-### Similar Problems
-1. Remove Element (LeetCode 27)
-2. Remove Duplicates (LeetCode 26)
-3. Sort Colors (LeetCode 75)
+---
+
+## Problem 6: Squares of a Sorted Array ⭐ NEW
+
+**Source**: https://leetcode.com/problems/squares-of-a-sorted-array/  
+**Difficulty**: 🟢 Easy  
+**Company Tags**: 🏢 Google, Facebook  
+**Frequency**: 📅 High
+
+### Problem Statement
+Given a sorted array of integers (may include negatives), return an array of squares sorted in non-decreasing order.
+
+### Examples
+```
+Input: [-4,-1,0,3,10]
+Output: [0,1,9,16,100]
+
+Input: [-7,-3,2,3,11]
+Output: [4,9,4,9,121] → sorted → [4,4,9,9,121]
+```
+
+### Pattern: Opposite Direction Two Pointer
+
+### Why Two Pointer?
+Naively squaring then sorting = O(n log n). But we can do O(n)!
+
+The largest squares come from either the most negative (leftmost) or most positive (rightmost) value. We fill the result array from the back.
+
+### Complete Solution
+```cpp
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> result(n);
+        int left = 0, right = n - 1;
+        int pos = n - 1;  // Fill from back
+
+        while (left <= right) {
+            int leftSq  = nums[left]  * nums[left];
+            int rightSq = nums[right] * nums[right];
+
+            if (leftSq > rightSq) {
+                result[pos] = leftSq;
+                left++;
+            } else {
+                result[pos] = rightSq;
+                right--;
+            }
+            pos--;
+        }
+
+        return result;
+    }
+};
+```
+
+### Dry Run
+```
+[-4, -1, 0, 3, 10]
+  L              R    result = [_, _, _, _, _]
+
+leftSq=16, rightSq=100 → 100 > 16 → result[4]=100, right--
+leftSq=16, rightSq=9   → 16 > 9  → result[3]=16, left++
+leftSq=1,  rightSq=9   → 9 > 1   → result[2]=9, right--
+leftSq=1,  rightSq=0   → 1 > 0   → result[1]=1, left++
+leftSq=0,  rightSq=0   → tie     → result[0]=0
+
+Result: [0, 1, 9, 16, 100] ✓
+```
+
+### Edge Cases
+- ✅ All negative → largest square is leftmost
+- ✅ All positive → same as squaring (no change in order)
+- ✅ Mixed negative/positive
+
+### Complexity: Time O(n), Space O(n) for result array
+
+---
+
+## Problem 7: Remove Element ⭐ NEW
+
+**Source**: https://leetcode.com/problems/remove-element/  
+**Difficulty**: 🟢 Easy  
+**Company Tags**: 🏢 Amazon, Microsoft  
+**Frequency**: 📅 High
+
+### Problem Statement
+Remove all occurrences of `val` from array in-place. Return the new length.
+
+### Examples
+```
+Input: nums = [3,2,2,3], val = 3
+Output: 2, nums = [2,2,_,_]
+
+Input: nums = [0,1,2,2,3,0,4,2], val = 2
+Output: 5, nums = [0,1,3,0,4,_,_,_]
+```
+
+### Pattern: Same Direction Fast/Slow
+
+### Complete Solution
+```cpp
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int slow = 0;
+
+        for (int fast = 0; fast < nums.size(); fast++) {
+            if (nums[fast] != val) {       // Keep non-val elements
+                nums[slow] = nums[fast];
+                slow++;
+            }
+        }
+
+        return slow;
+    }
+};
+```
+
+### Edge Cases
+- ✅ val not present → all elements kept, return n
+- ✅ All elements are val → return 0
+- ✅ Empty array → return 0
+
+### Complexity: Time O(n), Space O(1)
+
+---
+
+## Problem 8: Valid Palindrome II ⭐ NEW
+
+**Source**: https://leetcode.com/problems/valid-palindrome-ii/  
+**Difficulty**: 🟢 Easy (tricky!)  
+**Company Tags**: 🏢 Facebook  
+**Frequency**: 📅 High
+
+### Problem Statement
+Given a string, return true if the string can be a palindrome after deleting **at most one** character.
+
+### Examples
+```
+Input: "aba"   → true (already palindrome)
+Input: "abca"  → true (delete 'c' or 'b')
+Input: "abc"   → false
+```
+
+### Pattern: Opposite Direction Two Pointer + Helper
+
+### Complete Solution
+```cpp
+class Solution {
+private:
+    bool isPalin(const string& s, int l, int r) {
+        while (l < r) {
+            if (s[l] != s[r]) return false;
+            l++; r--;
+        }
+        return true;
+    }
+
+public:
+    bool validPalindrome(string s) {
+        int left = 0, right = s.size() - 1;
+
+        while (left < right) {
+            if (s[left] != s[right]) {
+                // Try skipping left OR skipping right
+                return isPalin(s, left + 1, right) ||
+                       isPalin(s, left, right - 1);
+            }
+            left++; right--;
+        }
+
+        return true;
+    }
+};
+```
+
+### Key Insight
+When characters don't match, we have exactly two choices: skip the left character or skip the right character. If either results in a valid palindrome, return true.
+
+### Dry Run
+```
+s = "abca"
+     L   R  → s[0]='a' == s[3]='a' ✓, left++, right--
+      L R   → s[1]='b' != s[2]='c' ✗
+             → Try isPalin("abca", 2, 2) = true ✓  (skip 'b')
+             → return true
+```
+
+### Edge Cases
+- ✅ Already a palindrome → no deletion needed
+- ✅ One character delete makes palindrome
+- ✅ No deletion can fix it → false
+
+### Complexity: Time O(n), Space O(1)
 
 ---
 
 ## 🎯 Key Takeaways from Easy Problems
 
-1. **Opposite Direction**: For pairs, palindromes, reverse
-2. **Same Direction**: For filtering, removing, moving
-3. **Always check edge cases**: Empty, single element
-4. **In-place means O(1) space**: No extra arrays
-5. **Sorted arrays are hints**: Often means two pointer
+1. **Opposite Direction** → Pairs, palindromes, reverse, squares
+2. **Same Direction** → Filtering, removing, compacting arrays in-place
+3. **Always check edge cases** → Empty array, single element
+4. **In-place means O(1) space** → No extra arrays (except output)
+5. **Sorted arrays are hints** → Often two pointer opportunity
+6. **Fill result from back** → Squares problem trick (largest first)
+7. **Try both options when stuck** → Valid Palindrome II: skip left OR skip right
 
 ---
 
 **Next**: Challenge yourself with Medium problems →
 
-[← Back to Notes](../Notes.md) | [Medium Problems →](Medium.md)
+[← Back to Notes](Notes.md) | [Medium Problems →](Medium.md)
