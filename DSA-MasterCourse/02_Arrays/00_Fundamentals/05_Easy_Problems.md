@@ -7,6 +7,28 @@
 
 ---
 
+## 🗺️ Problem Index
+
+| # | Problem | Difficulty | Key Technique | LeetCode | GFG | Others |
+|---|---------|------------|---------------|----------|-----|--------|
+| 1 | Largest Element | 🟢 Easy | Linear Scan | — | [GFG](https://www.geeksforgeeks.org/problems/largest-element-in-array4009/1) | [Coding Ninjas](https://www.naukri.com/code360/problems/largest-element-in-the-array_5026279) |
+| 2 | Second Largest | 🟢 Easy | Two Variables | — | [GFG](https://www.geeksforgeeks.org/find-second-largest-element-in-an-array/) | [Coding Ninjas](https://www.naukri.com/code360/problems/ninja-and-the-second-order-elements_6581960) |
+| 3 | Check Sorted | 🟢 Easy | Adjacent Compare | [LC 1752](https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/) | [GFG](https://www.geeksforgeeks.org/check-if-an-array-is-sorted-or-not/) | [HackerEarth](https://www.hackerearth.com/practice/algorithms/sorting/bubble-sort/practice-problems/) |
+| 4 | Remove Duplicates | 🟢 Easy | Two Pointers | [LC 26](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | [GFG](https://www.geeksforgeeks.org/remove-duplicates-sorted-array/) | [InterviewBit](https://www.interviewbit.com/problems/remove-duplicates-from-sorted-array/) |
+| 5 | Left Rotate by One | 🟢 Easy | Shift Elements | — | [GFG](https://www.geeksforgeeks.org/left-rotate-array-by-one/) | [Coding Ninjas](https://www.naukri.com/code360/problems/left-rotate-an-array-by-one_5026278) |
+| 6 | Left Rotate by K | 🟢 Easy | Reversal Algo | [LC 189](https://leetcode.com/problems/rotate-array/) | [GFG](https://www.geeksforgeeks.org/array-rotation/) | [InterviewBit](https://www.interviewbit.com/problems/rotate-array/) |
+| 7 | Move Zeros to End | 🟢 Easy | Two Pointers | [LC 283](https://leetcode.com/problems/move-zeroes/) | [GFG](https://www.geeksforgeeks.org/move-zeroes-end-array/) | [HackerRank](https://www.hackerrank.com/challenges/arrays-ds/problem) |
+| 8 | Linear Search | 🟢 Easy | Sequential Scan | — | [GFG](https://www.geeksforgeeks.org/linear-search/) | [HackerEarth](https://www.hackerearth.com/practice/algorithms/searching/linear-search/practice-problems/) |
+| 9 | Union of Sorted Arrays | 🟢 Easy | Two Pointer Merge | — | [GFG](https://www.geeksforgeeks.org/union-and-intersection-of-two-sorted-arrays-2/) | [Coding Ninjas](https://www.naukri.com/code360/problems/sorted-array_6613259) |
+| 10 | Missing Number | 🟢 Easy | Sum / XOR | [LC 268](https://leetcode.com/problems/missing-number/) | [GFG](https://www.geeksforgeeks.org/find-the-missing-number/) | [InterviewBit](https://www.interviewbit.com/problems/find-missing-integer/) |
+| 11 | Max Consecutive Ones | 🟢 Easy | Sliding Counter | [LC 485](https://leetcode.com/problems/max-consecutive-ones/) | [GFG](https://www.geeksforgeeks.org/maximum-consecutive-ones-or-zeros-in-a-binary-array/) | [Coding Ninjas](https://www.naukri.com/code360/problems/traffic_6784631) |
+| 12 | Single Number | 🟢 Easy | XOR Trick | [LC 136](https://leetcode.com/problems/single-number/) | [GFG](https://www.geeksforgeeks.org/find-element-appears-array-every-element-appears-twice/) | [InterviewBit](https://www.interviewbit.com/problems/single-number/) |
+| 13 | Longest Subarray Sum K (Positives) | 🟢 Easy | Sliding Window | — | [GFG](https://www.geeksforgeeks.org/longest-sub-array-sum-k/) | [Coding Ninjas](https://www.naukri.com/code360/problems/longest-subarray-with-sum-k_6682399) |
+| 14 | Longest Subarray Sum K (All) | 🟡 Medium | Prefix Sum + Hash | [LC 560](https://leetcode.com/problems/subarray-sum-equals-k/) | [GFG](https://www.geeksforgeeks.org/longest-sub-array-sum-k/) | [Coding Ninjas](https://www.naukri.com/code360/problems/longest-subarray-with-sum-k_5713505) |
+| 15 | Two Sum | 🟢 Easy | Hash Map | [LC 1](https://leetcode.com/problems/two-sum/) | [GFG](https://www.geeksforgeeks.org/given-an-array-a-and-a-number-x-check-for-pair-in-a-with-sum-as-x/) | [InterviewBit](https://www.interviewbit.com/problems/2-sum/) |
+
+---
+
 ## Problem 1: Largest Element in Array
 
 **Source**: https://www.geeksforgeeks.org/largest-element-in-array/  
@@ -47,6 +69,23 @@ int largestElementSTL(vector<int>& arr) {
     return *max_element(arr.begin(), arr.end());
 }
 ```
+
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| GeeksforGeeks | [Largest in Array](https://www.geeksforgeeks.org/problems/largest-element-in-array4009/1) | Direct problem |
+| Coding Ninjas | [Largest Element](https://www.naukri.com/code360/problems/largest-element-in-the-array_5026279) | With hints |
+| LeetCode (related) | [Kth Largest — LC 215](https://leetcode.com/problems/kth-largest-element-in-an-array/) | Extension: find Kth largest |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Second Largest Element | GFG | [Link](https://www.geeksforgeeks.org/find-second-largest-element-in-an-array/) | 🟢 Easy |
+| Kth Largest in Array | LeetCode 215 | [Link](https://leetcode.com/problems/kth-largest-element-in-an-array/) | 🟡 Medium |
+| Find Maximum in Generated Array | LeetCode 1646 | [Link](https://leetcode.com/problems/get-maximum-in-generated-array/) | 🟢 Easy |
+| Largest Number | LeetCode 179 | [Link](https://leetcode.com/problems/largest-number/) | 🟡 Medium |
 
 ### Complexity
 - **Time**: O(n)
@@ -96,8 +135,24 @@ int secondLargest(vector<int>& arr) {
 2. ✅ Only one element → -1
 3. ✅ No second largest → -1
 
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| GeeksforGeeks | [Second Largest](https://www.geeksforgeeks.org/find-second-largest-element-in-an-array/) | Classic formulation |
+| Coding Ninjas | [2nd Order Elements](https://www.naukri.com/code360/problems/ninja-and-the-second-order-elements_6581960) | Also asks for 2nd smallest |
+| LeetCode (related) | [Kth Largest — LC 215](https://leetcode.com/problems/kth-largest-element-in-an-array/) | Generalization to Kth |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Kth Largest Element | LeetCode 215 | [Link](https://leetcode.com/problems/kth-largest-element-in-an-array/) | 🟡 Medium |
+| Top K Frequent Elements | LeetCode 347 | [Link](https://leetcode.com/problems/top-k-frequent-elements/) | 🟡 Medium |
+| Find Kth Largest Integer (String) | LeetCode 1985 | [Link](https://leetcode.com/problems/find-the-kth-largest-integer-in-the-array/) | 🟡 Medium |
+
 ### Complexity
-- **Time**: O(n) - Single pass
+- **Time**: O(n)
 - **Space**: O(1)
 
 ---
@@ -135,6 +190,22 @@ bool isSorted(vector<int>& arr) {
     return true;
 }
 ```
+
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| LeetCode 1752 | [Check Sorted & Rotated](https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/) | Extension: also detects rotated |
+| GeeksforGeeks | [Check Sorted](https://www.geeksforgeeks.org/check-if-an-array-is-sorted-or-not/) | Basic version |
+| LeetCode 896 | [Monotonic Array](https://leetcode.com/problems/monotonic-array/) | Generalization |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Check if Array is Sorted and Rotated | LeetCode 1752 | [Link](https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/) | 🟢 Easy |
+| Monotonic Array | LeetCode 896 | [Link](https://leetcode.com/problems/monotonic-array/) | 🟢 Easy |
+| Count Inversions | GFG | [Link](https://www.geeksforgeeks.org/count-inversions-array-set-1-using-merge-sort/) | 🔴 Hard |
 
 ### Complexity
 - **Time**: O(n)
@@ -192,6 +263,22 @@ Step 2: nums[2] != nums[0] → i=1, nums[1]=nums[2]=1, j++
     i     j
 ```
 
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| LeetCode 26 | [Remove Duplicates](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | Classic two-pointer |
+| InterviewBit | [Remove Duplicates](https://www.interviewbit.com/problems/remove-duplicates-from-sorted-array/) | With explanation |
+| GFG | [Remove Duplicates Sorted](https://www.geeksforgeeks.org/remove-duplicates-sorted-array/) | Multiple approaches |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Remove Duplicates II (allow 2x) | LeetCode 80 | [Link](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/) | 🟡 Medium |
+| Remove Element | LeetCode 27 | [Link](https://leetcode.com/problems/remove-element/) | 🟢 Easy |
+| Remove Duplicates from Unsorted | GFG | [Link](https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-array/) | 🟡 Medium |
+
 ### Complexity
 - **Time**: O(n)
 - **Space**: O(1) - In-place
@@ -224,6 +311,22 @@ void rotateLeftByOne(vector<int>& arr) {
     arr[arr.size() - 1] = first;
 }
 ```
+
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| GeeksforGeeks | [Left Rotate by One](https://www.geeksforgeeks.org/left-rotate-array-by-one/) | Direct problem |
+| Coding Ninjas | [Left Rotate an Array by One](https://www.naukri.com/code360/problems/left-rotate-an-array-by-one_5026278) | With hints |
+| LeetCode (related) | [Rotate Array — LC 189](https://leetcode.com/problems/rotate-array/) | Rotate by k positions |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Rotate Array | LeetCode 189 | [Link](https://leetcode.com/problems/rotate-array/) | 🟢 Easy |
+| Rotate Array by K | GFG | [Link](https://www.geeksforgeeks.org/array-rotation/) | 🟢 Easy |
+| Cyclic Permutation | LeetCode 61 | [Link](https://leetcode.com/problems/rotate-list/) | 🟡 Medium |
 
 ### Complexity
 - **Time**: O(n)
@@ -276,6 +379,21 @@ Step 2: Reverse [3, 6] → [3, 2, 1, 7, 6, 5, 4]
 Step 3: Reverse [0, 6] → [4, 5, 6, 7, 1, 2, 3] ✓
 ```
 
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| LeetCode 189 | [Rotate Array](https://leetcode.com/problems/rotate-array/) | Direct problem |
+| GeeksforGeeks | [Array Rotation](https://www.geeksforgeeks.org/array-rotation/) | Reversal algo |
+| InterviewBit | [Rotate Array](https://www.interviewbit.com/problems/rotate-array/) | Similar problem |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Rotate Image | LeetCode 48 | [Link](https://leetcode.com/problems/rotate-image/) | 🟡 Medium |
+| Cyclic Permutation | LeetCode 61 | [Link](https://leetcode.com/problems/rotate-list/) | 🟡 Medium |
+
 ### Complexity
 - **Time**: O(n)
 - **Space**: O(1)
@@ -324,6 +442,21 @@ j=3: nums[3]=3 → swap(i,j), i++ → [1, 3, 0, 0, 12], i=2
 j=4: nums[4]=12 → swap(i,j), i++ → [1, 3, 12, 0, 0], i=3
 ```
 
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| LeetCode 283 | [Move Zeroes](https://leetcode.com/problems/move-zeroes/) | Direct problem |
+| GeeksforGeeks | [Move Zeroes to End](https://www.geeksforgeeks.org/move-zeroes-end-array/) | Direct problem |
+| HackerRank | [Arrays - DS](https://www.hackerrank.com/challenges/arrays-ds/problem) | Related |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Move Zeroes II | LeetCode 283 | [Link](https://leetcode.com/problems/move-zeroes/) | 🟢 Easy |
+| Sort Array By Parity | LeetCode 905 | [Link](https://leetcode.com/problems/sort-array-by-parity/) | 🟢 Easy |
+
 ### Complexity
 - **Time**: O(n)
 - **Space**: O(1)
@@ -351,6 +484,21 @@ int linearSearch(vector<int>& arr, int target) {
     return -1;
 }
 ```
+
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| GeeksforGeeks | [Linear Search](https://www.geeksforgeeks.org/linear-search/) | Direct problem |
+| HackerEarth | [Linear Search practice](https://www.hackerearth.com/practice/algorithms/searching/linear-search/practice-problems/) | Practice problems |
+| Coding Ninjas | [Linear Search](https://www.naukri.com/code360/problems/linear-search_5026280) | Similar practice |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Binary Search | LeetCode 704 | [Link](https://leetcode.com/problems/binary-search/) | 🟢 Easy |
+| Search in Rotated Sorted Array | LeetCode 33 | [Link](https://leetcode.com/problems/search-in-rotated-sorted-array/) | 🟡 Medium |
 
 ### Complexity
 - **Time**: O(n)
@@ -395,14 +543,14 @@ vector<int> findUnion(vector<int>& arr1, vector<int>& arr2) {
     }
     
     while(i < arr1.size()) {
-        if(result.back() != arr1[i]) {
+        if(result.empty() || result.back() != arr1[i]) {
             result.push_back(arr1[i]);
         }
         i++;
     }
     
     while(j < arr2.size()) {
-        if(result.back() != arr2[j]) {
+        if(result.empty() || result.back() != arr2[j]) {
             result.push_back(arr2[j]);
         }
         j++;
@@ -411,6 +559,21 @@ vector<int> findUnion(vector<int>& arr1, vector<int>& arr2) {
     return result;
 }
 ```
+
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| GeeksforGeeks | [Union and Intersection of Two Sorted Arrays](https://www.geeksforgeeks.org/union-and-intersection-of-two-sorted-arrays-2/) | Direct problem |
+| Coding Ninjas | [Sorted Array](https://www.naukri.com/code360/problems/sorted-array_6613259) | Related |
+| LeetCode (related) | [Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/) | Similar approach |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Intersection of Two Arrays | LeetCode 349 | [Link](https://leetcode.com/problems/intersection-of-two-arrays/) | 🟢 Easy |
+| Merge Sorted Array | LeetCode 88 | [Link](https://leetcode.com/problems/merge-sorted-array/) | 🟢 Easy |
 
 ### Complexity
 - **Time**: O(m + n)
@@ -470,6 +633,21 @@ int missingNumberXOR(vector<int>& nums) {
 }
 ```
 
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| LeetCode 268 | [Missing Number](https://leetcode.com/problems/missing-number/) | Direct problem |
+| GeeksforGeeks | [Find the Missing Number](https://www.geeksforgeeks.org/find-the-missing-number/) | Direct problem |
+| InterviewBit | [Find Missing Integer](https://www.interviewbit.com/problems/find-missing-integer/) | Direct problem |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Find the Duplicate Number | LeetCode 287 | [Link](https://leetcode.com/problems/find-the-duplicate-number/) | 🟡 Medium |
+| First Missing Positive | LeetCode 41 | [Link](https://leetcode.com/problems/first-missing-positive/) | 🟡 Medium |
+
 ### Complexity
 - **Time**: O(n)
 - **Space**: O(1)
@@ -513,6 +691,21 @@ int findMaxConsecutiveOnes(vector<int>& nums) {
 }
 ```
 
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| LeetCode 485 | [Max Consecutive Ones](https://leetcode.com/problems/max-consecutive-ones/) | Direct problem |
+| GeeksforGeeks | [Maximum Consecutive Ones or Zeros](https://www.geeksforgeeks.org/maximum-consecutive-ones-or-zeros-in-a-binary-array/) | Direct problem |
+| Coding Ninjas | [Traffic](https://www.naukri.com/code360/problems/traffic_6784631) | Similar |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Max Consecutive Ones II | LeetCode 487 | [Link](https://leetcode.com/problems/max-consecutive-ones-ii/) | 🟡 Medium |
+| Longest Consecutive Sequence | LeetCode 128 | [Link](https://leetcode.com/problems/longest-consecutive-sequence/) | 🟡 Medium |
+
 ### Complexity
 - **Time**: O(n)
 - **Space**: O(1)
@@ -555,6 +748,21 @@ a ^ a = 0
 a ^ 0 = a
 4 ^ 1 ^ 2 ^ 1 ^ 2 = 4 ^ (1 ^ 1) ^ (2 ^ 2) = 4 ^ 0 ^ 0 = 4
 ```
+
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| LeetCode 136 | [Single Number](https://leetcode.com/problems/single-number/) | Direct problem |
+| GeeksforGeeks | [Find element appears only once](https://www.geeksforgeeks.org/find-element-appears-array-every-element-appears-twice/) | Similar |
+| InterviewBit | [Single Number](https://www.interviewbit.com/problems/single-number/) | Direct problem |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Single Number II | LeetCode 137 | [Link](https://leetcode.com/problems/single-number-ii/) | 🟡 Medium |
+| Single Number III | LeetCode 260 | [Link](https://leetcode.com/problems/single-number-iii/) | 🟡 Medium |
 
 ### Complexity
 - **Time**: O(n)
@@ -608,9 +816,24 @@ int longestSubarrayWithSumK(vector<int>& arr, int k) {
 }
 ```
 
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| GeeksforGeeks | [Longest Subarray Sum K](https://www.geeksforgeeks.org/longest-sub-array-sum-k/) | Direct problem |
+| Coding Ninjas | [Longest Subarray with Sum K](https://www.naukri.com/code360/problems/longest-subarray-with-sum-k_6682399) | Positives only version |
+| LeetCode 560 | [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) | Direct problem |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Subarray Sum Equals K | LeetCode 560 | [Link](https://leetcode.com/problems/subarray-sum-equals-k/) | 🟡 Medium |
+| Count Subarrays with Sum K | LeetCode 560 | [Link](https://leetcode.com/problems/subarray-sum-equals-k/) | 🟡 Medium |
+
 ### Complexity
 - **Time**: O(n)
-- **Space**: O(1)
+- **Space**: O(n)
 
 ---
 
@@ -653,6 +876,21 @@ int longestSubarrayWithSumKGeneral(vector<int>& arr, int k) {
 }
 ```
 
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| GeeksforGeeks | [Longest Subarray Sum K](https://www.geeksforgeeks.org/longest-sub-array-sum-k/) | Direct problem |
+| Coding Ninjas | [Longest Subarray with Sum K](https://www.naukri.com/code360/problems/longest-subarray-with-sum-k_5713505) | Direct problem |
+| LeetCode 560 | [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) | Direct problem |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| Subarray Sum Equals K | LeetCode 560 | [Link](https://leetcode.com/problems/subarray-sum-equals-k/) | 🟡 Medium |
+| Count Subarrays with Sum K | LeetCode 560 | [Link](https://leetcode.com/problems/subarray-sum-equals-k/) | 🟡 Medium |
+
 ### Complexity
 - **Time**: O(n)
 - **Space**: O(n)
@@ -693,6 +931,21 @@ vector<int> twoSum(vector<int>& nums, int target) {
     return {};
 }
 ```
+
+### Practice Links
+
+| Platform | Link | Notes |
+|----------|------|-------|
+| LeetCode 1 | [Two Sum](https://leetcode.com/problems/two-sum/) | Direct problem |
+| GeeksforGeeks | [Check for pair with sum x](https://www.geeksforgeeks.org/given-an-array-a-and-a-number-x-check-for-pair-in-a-with-sum-as-x/) | Similar |
+| InterviewBit | [2 Sum](https://www.interviewbit.com/problems/2-sum/) | Direct problem |
+
+### Similar / Follow-Up Problems
+
+| Problem | Platform | Link | Difficulty |
+|---------|----------|------|-----------|
+| 3Sum | LeetCode 15 | [Link](https://leetcode.com/problems/3sum/) | 🟡 Medium |
+| Two Sum Less Than K | LeetCode 167 | [Link](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) | 🟡 Medium |
 
 ### Complexity
 - **Time**: O(n)
