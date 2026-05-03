@@ -1,8 +1,8 @@
 # Two Pointer — Hard Problems
 
-> **7 advanced problems requiring creative thinking**  
+> **5 advanced problems requiring creative thinking**  
 > **Prerequisites**: Medium Problems, strong pattern recognition  
-> **Time Required**: 5-6 hours
+> **Time Required**: 4-5 hours
 
 ---
 
@@ -14,73 +14,97 @@
 **Frequency**: 📅 Very High
 
 ### Problem Statement
-Given strings s and t, return the minimum window in s which contains all characters of t. Return "" if no such window exists.
+Given two strings s and t, return the minimum window in s which will contain all the characters in t. If no such window exists, return empty string.
 
 ### Examples
 ```
 Input: s = "ADOBECODEBANC", t = "ABC"
 Output: "BANC"
+Explanation: Minimum window that contains all characters of "ABC"
 ```
 
-### Pattern: Variable Sliding Window + Hash Map
+### Pattern Identification
+**Keywords**: "minimum window", "contains all characters"  
+**Pattern**: Sliding Window + Two Pointer + Hash Map
 
 ### Approach
+
+#### Optimized Sliding Window (O(n))
 1. Count required characters from t
-2. Expand right until all t characters are in window (`formed == required`)
-3. Shrink from left while maintaining validity, track minimum
-4. Repeat
+2. Expand window with right pointer
+3. When all characters found, shrink from left
+4. Track minimum window size
 
 ### Complete Solution
 ```cpp
+#include <string>
+#include <unordered_map>
+#include <climits>
+using namespace std;
+
 class Solution {
 public:
     string minWindow(string s, string t) {
-        if (s.empty() || t.empty()) return "";
-
-        unordered_map<char, int> need;
-        for (char c : t) need[c]++;
-
-        int required = need.size();   // Distinct chars needed
-        int formed = 0;               // Distinct chars currently satisfied
-
-        unordered_map<char, int> have;
-        int left = 0;
-        int minLen = INT_MAX, minLeft = 0;
-
-        for (int right = 0; right < s.size(); right++) {
+        if(s.empty() || t.empty()) return "";
+        
+        unordered_map<char, int> required;
+        for(char c : t) {
+            required[c]++;
+        }
+        
+        int requiredCount = required.size();
+        int left = 0, right = 0;
+        int formed = 0;
+        
+        unordered_map<char, int> windowCounts;
+        int minLen = INT_MAX;
+        int minLeft = 0, minRight = 0;
+        
+        while(right < s.size()) {
             char c = s[right];
-            have[c]++;
-
-            if (need.count(c) && have[c] == need[c])
+            windowCounts[c]++;
+            
+            if(required.count(c) && windowCounts[c] == required[c]) {
                 formed++;
-
+            }
+            
             // Try to shrink window
-            while (formed == required) {
-                if (right - left + 1 < minLen) {
+            while(left <= right && formed == requiredCount) {
+                // Update minimum window
+                if(right - left + 1 < minLen) {
                     minLen = right - left + 1;
                     minLeft = left;
+                    minRight = right;
                 }
-
-                char lc = s[left];
-                have[lc]--;
-                if (need.count(lc) && have[lc] < need[lc])
+                
+                char leftChar = s[left];
+                windowCounts[leftChar]--;
+                
+                if(required.count(leftChar) && windowCounts[leftChar] < required[leftChar]) {
                     formed--;
+                }
+                
                 left++;
             }
+            
+            right++;
         }
-
+        
         return minLen == INT_MAX ? "" : s.substr(minLeft, minLen);
     }
 };
 ```
 
 ### Edge Cases
-- ✅ t longer than s → ""
-- ✅ No valid window → ""
-- ✅ t has duplicate characters
-- ✅ Exact match (s == t)
+1. ✅ t longer than s → ""
+2. ✅ No valid window → ""
+3. ✅ Multiple windows of same size
+4. ✅ All characters same
+5. ✅ t has duplicate characters
 
-### Complexity: Time O(|s| + |t|), Space O(|s| + |t|)
+### Complexity
+- **Time**: O(|s| + |t|) - Each character visited at most twice
+- **Space**: O(|s| + |t|) - Hash maps
 
 ---
 
@@ -92,43 +116,59 @@ public:
 **Frequency**: 📅 High
 
 ### Problem Statement
-Given an array and window size k, return the max element in each sliding window.
+Given an array and a window size k, find the maximum element in each sliding window as it moves from left to right.
 
 ### Examples
 ```
 Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
 Output: [3,3,5,5,6,7]
+Explanation:
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
 ```
 
-### Pattern: Monotonic Deque (Decreasing)
-
-### Key Insight
-Maintain a deque of indices in decreasing order of their values. The front always has the max for the current window.
+### Pattern Identification
+**Keywords**: "sliding window", "maximum in window"  
+**Pattern**: Monotonic Deque
 
 ### Complete Solution
 ```cpp
+#include <vector>
+#include <deque>
+using namespace std;
+
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-        deque<int> dq;  // Stores indices, decreasing values
         vector<int> result;
-
-        for (int i = 0; i < nums.size(); i++) {
-            // Remove indices outside current window
-            if (!dq.empty() && dq.front() == i - k)
+        deque<int> dq;  // Stores indices
+        
+        for(int i = 0; i < nums.size(); i++) {
+            // Remove elements out of window
+            if(!dq.empty() && dq.front() == i - k) {
                 dq.pop_front();
-
-            // Remove smaller elements from back (they'll never be max)
-            while (!dq.empty() && nums[dq.back()] < nums[i])
+            }
+            
+            // Remove smaller elements (they're useless)
+            while(!dq.empty() && nums[dq.back()] < nums[i]) {
                 dq.pop_back();
-
+            }
+            
+            // Add current element
             dq.push_back(i);
-
-            // Window is fully formed
-            if (i >= k - 1)
+            
+            // Record maximum for valid windows
+            if(i >= k - 1) {
                 result.push_back(nums[dq.front()]);
+            }
         }
-
+        
         return result;
     }
 };
@@ -136,17 +176,29 @@ public:
 
 ### Dry Run
 ```
-nums=[1,3,-1,-3,5,3,6,7], k=3
+nums = [1,3,-1,-3,5,3,6,7], k = 3
 
 i=0: dq=[0(1)]
-i=1: 3>1 → pop 0, dq=[1(3)]
-i=2: -1<3 → dq=[1(3),2(-1)] → window full → result=[3]
-i=3: -3<-1 → dq=[1(3),2(-1),3(-3)] → front=1 still in window → result=[3,3]
-i=4: 5>-3,-1,3 → all popped, dq=[4(5)] → front=4, 4-3=1 not==4-3? 4>=3 → result=[3,3,5]
-...
+i=1: dq=[1(3)] (removed 0 because 1<3)
+i=2: dq=[1(3), 2(-1)] → max = 3
+i=3: dq=[1(3), 3(-3)] → max = 3
+i=4: dq=[4(5)] (removed 1,2,3) → max = 5
+i=5: dq=[4(5), 5(3)] → max = 5
+i=6: dq=[6(6)] → max = 6
+i=7: dq=[7(7)] → max = 7
+
+Result: [3,3,5,5,6,7] ✓
 ```
 
-### Complexity: Time O(n), Space O(k)
+### Edge Cases
+1. ✅ k = 1 → return original array
+2. ✅ k = n → return single max
+3. ✅ All elements same
+4. ✅ Strictly increasing/decreasing
+
+### Complexity
+- **Time**: O(n) - Each element added/removed at most once
+- **Space**: O(k) - Deque stores at most k elements
 
 ---
 
@@ -158,62 +210,79 @@ i=4: 5>-3,-1,3 → all popped, dq=[4(5)] → front=4, 4-3=1 not==4-3? 4>=3 → r
 **Frequency**: 📅 Very High
 
 ### Problem Statement
-Find the median of two sorted arrays in O(log(m+n)) time.
+Given two sorted arrays, find the median of the two sorted arrays with overall run time complexity O(log(m+n)).
 
 ### Examples
 ```
-Input: nums1=[1,3], nums2=[2]       → Output: 2.0
-Input: nums1=[1,2], nums2=[3,4]     → Output: 2.5
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: Merged array = [1,2,3], median is 2
+
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: Merged array = [1,2,3,4], median is (2+3)/2 = 2.5
 ```
 
-### Pattern: Binary Search on Partition
-
-### Key Insight
-Instead of merging, find the correct partition of each array such that:
-- Left halves combined = Right halves combined (in count)
-- Every element in left halves ≤ every element in right halves
-
-Binary search the partition position on the smaller array.
+### Pattern Identification
+**Keywords**: "median", "two sorted arrays", "O(log n)"  
+**Pattern**: Binary Search on Answer
 
 ### Complete Solution
 ```cpp
+#include <vector>
+#include <algorithm>
+using namespace std;
+
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        if (nums1.size() > nums2.size())
-            swap(nums1, nums2);  // Ensure nums1 is smaller
-
-        int m = nums1.size(), n = nums2.size();
+        // Ensure nums1 is smaller
+        if(nums1.size() > nums2.size()) {
+            swap(nums1, nums2);
+        }
+        
+        int m = nums1.size();
+        int n = nums2.size();
         int left = 0, right = m;
-
-        while (left <= right) {
-            int px = left + (right - left) / 2;  // Partition in nums1
-            int py = (m + n + 1) / 2 - px;       // Partition in nums2
-
-            int maxX = (px == 0) ? INT_MIN : nums1[px - 1];
-            int minX = (px == m) ? INT_MAX : nums1[px];
-            int maxY = (py == 0) ? INT_MIN : nums2[py - 1];
-            int minY = (py == n) ? INT_MAX : nums2[py];
-
-            if (maxX <= minY && maxY <= minX) {
-                // Correct partition
-                if ((m + n) % 2 == 0)
+        
+        while(left <= right) {
+            int partitionX = left + (right - left) / 2;
+            int partitionY = (m + n + 1) / 2 - partitionX;
+            
+            int maxX = (partitionX == 0) ? INT_MIN : nums1[partitionX - 1];
+            int minX = (partitionX == m) ? INT_MAX : nums1[partitionX];
+            
+            int maxY = (partitionY == 0) ? INT_MIN : nums2[partitionY - 1];
+            int minY = (partitionY == n) ? INT_MAX : nums2[partitionY];
+            
+            if(maxX <= minY && maxY <= minX) {
+                // Found correct partition
+                if((m + n) % 2 == 0) {
                     return (max(maxX, maxY) + min(minX, minY)) / 2.0;
-                else
+                } else {
                     return max(maxX, maxY);
-            } else if (maxX > minY) {
-                right = px - 1;  // Move partition left in nums1
+                }
+            } else if(maxX > minY) {
+                right = partitionX - 1;
             } else {
-                left = px + 1;   // Move partition right in nums1
+                left = partitionX + 1;
             }
         }
-
+        
         return 0.0;
     }
 };
 ```
 
-### Complexity: Time O(log(min(m,n))), Space O(1)
+### Edge Cases
+1. ✅ One array empty
+2. ✅ Arrays of different sizes
+3. ✅ All elements in one array smaller
+4. ✅ Even/odd total length
+
+### Complexity
+- **Time**: O(log(min(m, n))) - Binary search on smaller array
+- **Space**: O(1)
 
 ---
 
@@ -225,51 +294,70 @@ public:
 **Frequency**: 📅 Medium
 
 ### Problem Statement
-Given array and bounds [lower, upper], count range sums S(i,j) (sum of nums[i..j]) in [lower, upper].
+Given an integer array and two integers lower and upper, return the number of range sums that lie in [lower, upper] inclusive.
 
 ### Examples
 ```
 Input: nums = [-2,5,-1], lower = -2, upper = 2
-Output: 3  → [-2], [-1], [-2,5,-1] all fall in range
+Output: 3
+Explanation: Range sums: [-2], [-1], [-2,5,-1] are in range [-2,2]
 ```
 
-### Pattern: Prefix Sum + Merge Sort
+### Pattern Identification
+**Keywords**: "range sum", "count", "between lower and upper"  
+**Pattern**: Prefix Sum + Merge Sort / BST
 
 ### Complete Solution
 ```cpp
+#include <vector>
+using namespace std;
+
 class Solution {
 public:
     int countRangeSum(vector<int>& nums, int lower, int upper) {
         int n = nums.size();
         vector<long long> prefixSum(n + 1, 0);
-        for (int i = 0; i < n; i++)
+        
+        for(int i = 0; i < n; i++) {
             prefixSum[i + 1] = prefixSum[i] + nums[i];
-
-        return mergeCount(prefixSum, 0, n, lower, upper);
+        }
+        
+        return mergeSort(prefixSum, 0, n, lower, upper);
     }
-
-    int mergeCount(vector<long long>& sums, int start, int end, int lower, int upper) {
-        if (end - start <= 1) return 0;
-
+    
+    int mergeSort(vector<long long>& sums, int start, int end, int lower, int upper) {
+        if(end - start <= 1) return 0;
+        
         int mid = start + (end - start) / 2;
-        int count = mergeCount(sums, start, mid, lower, upper) +
-                    mergeCount(sums, mid, end, lower, upper);
-
-        // Count valid pairs across left and right halves
-        int j = mid, k = mid;
-        for (int i = start; i < mid; i++) {
-            while (k < end && sums[k] - sums[i] <  lower) k++;
-            while (j < end && sums[j] - sums[i] <= upper) j++;
+        int count = mergeSort(sums, start, mid, lower, upper) +
+                    mergeSort(sums, mid, end, lower, upper);
+        
+        // Count valid ranges
+        int j = mid, k = mid, t = mid;
+        for(int i = start; i < mid; i++) {
+            while(k < end && sums[k] - sums[i] < lower) k++;
+            while(j < end && sums[j] - sums[i] <= upper) j++;
             count += j - k;
         }
-
+        
+        // Merge
         inplace_merge(sums.begin() + start, sums.begin() + mid, sums.begin() + end);
+        
         return count;
     }
 };
 ```
 
-### Complexity: Time O(n log n), Space O(n)
+### Edge Cases
+1. ✅ Empty array
+2. ✅ All range sums valid
+3. ✅ No range sums valid
+4. ✅ Negative numbers
+5. ✅ Large values (use long long)
+
+### Complexity
+- **Time**: O(n log n) - Merge sort
+- **Space**: O(n) - Prefix sum array
 
 ---
 
@@ -281,234 +369,110 @@ public:
 **Frequency**: 📅 High
 
 ### Problem Statement
-Given an unsorted array, find the length of the longest consecutive sequence in O(n) time.
+Given an unsorted array of integers, find the length of the longest consecutive elements sequence. Algorithm must run in O(n) time.
 
 ### Examples
 ```
-Input: [100,4,200,1,3,2]
-Output: 4  (sequence: 1,2,3,4)
+Input: nums = [100,4,200,1,3,2]
+Output: 4
+Explanation: Longest consecutive sequence is [1, 2, 3, 4]
 ```
 
-### Pattern: Hash Set + Smart Start Detection
-
-### Key Insight
-Only start counting from the beginning of a sequence (i.e., where `num-1` is NOT in the set). This ensures each sequence is counted exactly once.
+### Pattern Identification
+**Keywords**: "consecutive", "unsorted", "O(n) time"  
+**Pattern**: Hash Set + Smart Iteration
 
 ### Complete Solution
 ```cpp
+#include <vector>
+#include <unordered_set>
+#include <algorithm>
+using namespace std;
+
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
         unordered_set<int> numSet(nums.begin(), nums.end());
-        int longest = 0;
-
-        for (int num : numSet) {
-            if (numSet.find(num - 1) == numSet.end()) {  // Start of sequence
+        int longestStreak = 0;
+        
+        for(int num : numSet) {
+            // Only start counting if num is the beginning of a sequence
+            if(numSet.find(num - 1) == numSet.end()) {
                 int currentNum = num;
-                int streak = 1;
-
-                while (numSet.find(currentNum + 1) != numSet.end()) {
+                int currentStreak = 1;
+                
+                while(numSet.find(currentNum + 1) != numSet.end()) {
                     currentNum++;
-                    streak++;
+                    currentStreak++;
                 }
-
-                longest = max(longest, streak);
+                
+                longestStreak = max(longestStreak, currentStreak);
             }
         }
-
-        return longest;
+        
+        return longestStreak;
     }
 };
 ```
 
-### Complexity: Time O(n), Space O(n)
-
----
-
-## Problem 6: 4Sum ⭐ NEW
-
-**Source**: https://leetcode.com/problems/4sum/  
-**Difficulty**: 🔴 Hard  
-**Company Tags**: 🏢 Amazon, Adobe  
-**Frequency**: 📅 High
-
-### Problem Statement
-Given an integer array and target, return all unique quadruplets that sum to target.
-
-### Examples
+### Dry Run
 ```
-Input: nums = [1,0,-1,0,-2,2], target = 0
-Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+nums = [100,4,200,1,3,2]
+numSet = {100, 4, 200, 1, 3, 2}
+
+Check 100: 99 not in set → start counting
+           101 not in set → streak = 1
+
+Check 4: 3 in set → skip (not start)
+
+Check 200: 199 not in set → start counting
+           201 not in set → streak = 1
+
+Check 1: 0 not in set → start counting
+         2 in set → continue
+         3 in set → continue
+         4 in set → continue
+         5 not in set → streak = 4
+
+Check 3: 2 in set → skip
+Check 2: 1 in set → skip
+
+Longest streak = 4 ✓
 ```
-
-### Pattern: Sorting + Two Nested Loops + Two Pointer
-
-### Key Insight
-Extend 3Sum by adding another outer loop. Fix two elements (i, j) and use two pointer for the remaining two.
-
-### Complete Solution
-```cpp
-class Solution {
-public:
-    vector<vector<int>> fourSum(vector<int>& nums, int target) {
-        vector<vector<int>> result;
-        int n = nums.size();
-        sort(nums.begin(), nums.end());
-
-        for (int i = 0; i < n - 3; i++) {
-            if (i > 0 && nums[i] == nums[i-1]) continue;  // Skip dup i
-
-            for (int j = i + 1; j < n - 2; j++) {
-                if (j > i + 1 && nums[j] == nums[j-1]) continue;  // Skip dup j
-
-                int left = j + 1, right = n - 1;
-
-                while (left < right) {
-                    long long sum = (long long)nums[i] + nums[j] + nums[left] + nums[right];
-
-                    if (sum == target) {
-                        result.push_back({nums[i], nums[j], nums[left], nums[right]});
-                        while (left < right && nums[left]  == nums[left+1])  left++;
-                        while (left < right && nums[right] == nums[right-1]) right--;
-                        left++; right--;
-                    } else if (sum < target) {
-                        left++;
-                    } else {
-                        right--;
-                    }
-                }
-            }
-        }
-
-        return result;
-    }
-};
-```
-
-### Why long long?
-`nums[i]` can be up to 10^9, four of them sum to 4×10^9 which overflows `int`. Cast to `long long` before adding.
 
 ### Edge Cases
-- ✅ Fewer than 4 elements → empty
-- ✅ All same elements [0,0,0,0], target=0 → [[0,0,0,0]]
-- ✅ Overflow prevention with long long
+1. ✅ Empty array → 0
+2. ✅ Single element → 1
+3. ✅ All elements same → 1
+4. ✅ Already consecutive
+5. ✅ Multiple sequences of same length
 
-### Complexity: Time O(n³), Space O(1) excluding output
-
----
-
-## Problem 7: Trapping Rain Water II (3D) ⭐ NEW
-
-**Source**: https://leetcode.com/problems/trapping-rain-water-ii/  
-**Difficulty**: 🔴 Hard  
-**Company Tags**: 🏢 Google  
-**Frequency**: 📅 Medium
-
-### Problem Statement
-Given a 2D elevation map (matrix), calculate total water that can be trapped.
-
-### Examples
-```
-Input: [[1,4,3],[3,2,4],[2,3,1]]
-Output: 4
-```
-
-### Pattern: Min-Heap (BFS from borders inward)
-
-### Key Insight (Extension of 1D)
-In 2D, water at a cell is determined by the minimum border height reachable from outside. Use a min-heap to always process the lowest border cell first — this gives us the minimum "barrier" for inner cells.
-
-### Complete Solution
-```cpp
-class Solution {
-public:
-    int trapRainWater(vector<vector<int>>& heightMap) {
-        int m = heightMap.size(), n = heightMap[0].size();
-        if (m < 3 || n < 3) return 0;
-
-        // Min-heap: {height, row, col}
-        priority_queue<tuple<int,int,int>,
-                       vector<tuple<int,int,int>>,
-                       greater<>> minHeap;
-        vector<vector<bool>> visited(m, vector<bool>(n, false));
-
-        // Add all border cells
-        for (int i = 0; i < m; i++) {
-            for (int j : {0, n-1}) {
-                minHeap.push({heightMap[i][j], i, j});
-                visited[i][j] = true;
-            }
-        }
-        for (int j = 1; j < n-1; j++) {
-            for (int i : {0, m-1}) {
-                minHeap.push({heightMap[i][j], i, j});
-                visited[i][j] = true;
-            }
-        }
-
-        int water = 0;
-        int dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
-
-        while (!minHeap.empty()) {
-            auto [h, r, c] = minHeap.top(); minHeap.pop();
-
-            for (auto& d : dirs) {
-                int nr = r + d[0], nc = c + d[1];
-                if (nr < 0 || nr >= m || nc < 0 || nc >= n || visited[nr][nc])
-                    continue;
-
-                visited[nr][nc] = true;
-                water += max(0, h - heightMap[nr][nc]);
-                minHeap.push({max(h, heightMap[nr][nc]), nr, nc});
-            }
-        }
-
-        return water;
-    }
-};
-```
-
-### Complexity: Time O(m×n×log(m×n)), Space O(m×n)
+### Complexity
+- **Time**: O(n) - Each element visited at most twice
+- **Space**: O(n) - Hash set
 
 ---
 
 ## 🎯 Key Takeaways from Hard Problems
 
-1. **Sliding Window + Hash Map** → Minimum Window Substring — track frequencies, formed/required counts
-2. **Monotonic Deque** → Sliding Window Maximum — O(n) by discarding elements that can never be max
-3. **Binary Search on Partition** → Median of Sorted Arrays — avoid merging entirely
-4. **Prefix Sum + Divide & Conquer** → Count of Range Sum — merge sort while counting valid pairs
-5. **Hash Set + Smart Start** → Consecutive Sequence — only start from sequence beginnings
-6. **Nested Loops + Two Pointer** → 4Sum — generalizes 3Sum, watch for overflow
-7. **Min Heap BFS** → 3D Trapping Rain Water — border-inward approach
+1. **Sliding window with hash map** - Minimum window substring
+2. **Monotonic deque** - Sliding window maximum
+3. **Binary search on answer** - Median of sorted arrays
+4. **Prefix sum + divide & conquer** - Count of range sum
+5. **Hash set with smart iteration** - Longest consecutive sequence
 
 ---
 
-## 💡 General Tips for Hard Problems
+## 💡 Pro Tips for Hard Problems
 
-1. **Identify the core bottleneck** — What makes brute force O(n³) or O(n²)? Can we eliminate one loop?
-2. **Think about invariants** — What stays true at each iteration?
-3. **Consider helper data structures** — Hash map, deque, heap often complement two pointer
-4. **Break into subproblems** — 4Sum = 3Sum = 2Sum. Hard problems often chain simpler patterns.
-5. **Handle overflow** — Use `long long` when summing multiple large values
-6. **Start with the O(n²) solution first** — Interviewers often accept it, then ask for optimization
-
----
-
-## 🏆 Interview-Ready Summary
-
-| Problem | Key Insight | Pattern |
-|---------|-------------|---------|
-| Min Window Substring | formed/required tracking | Sliding Window + Map |
-| Sliding Window Max | Monotonic deque discards useless elements | Monotonic Deque |
-| Median 2 Sorted Arrays | Binary search on partition position | Binary Search |
-| Count Range Sum | Prefix sum → count pairs in merge sort | Merge Sort |
-| Longest Consecutive | Only start counting from sequence start | Hash Set |
-| 4Sum | Fix 2 elements, two pointer for rest | Sort + 2 Loops + 2P |
-| Rain Water II (3D) | Min heap processes border-inward | BFS + Heap |
+1. **Identify the core pattern** - Don't get distracted by complexity
+2. **Start with brute force** - Understand the problem first
+3. **Look for optimizations** - What's redundant?
+4. **Use appropriate data structures** - Deque, hash map, BST
+5. **Practice regularly** - Hard problems require pattern recognition
 
 ---
 
 **Congratulations! You've mastered Two Pointer problems!**
 
-[← Back to Medium](Medium.md) | [← Back to Notes](Notes.md)
+[← Back to Medium](Medium.md) | [← Back to Notes](../Notes.md)
